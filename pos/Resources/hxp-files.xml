@@ -1,0 +1,74 @@
+<Application 
+    Title="YemekSepeti" 
+    Version="1.1"
+    ReleaseDate=""
+    Icon="Icon.bin" 
+    Company="Servus" 
+    DestinationDir="Hyperware" 
+    Main="YemekSepeti.app" 
+    MainAttributes="0" 
+    UniqueName="YemekSepeti">
+      <Files>
+    <File URL="Resources\Images\M4100\background.bin" Target="M4100/*"/>
+	<File URL="Resources\Images\T4100\Icon.bin" Target="T4100/*"/>
+	<File URL="Resources\Images\T4100\Icon.bin" Target="T4200/*"/>
+	<File URL="Resources\Images\M4100\Icon.bin" Target="M4100/*"/>
+    <File URL="Release\T4100\YemekSepeti.app" Target="T4100/Release"/>
+    <File URL="Release\T4200\YemekSepeti.app" Target="T4200/Release"/>
+    <File URL="Release\M4100\YemekSepeti.app" Target="M4100/Release"/>
+    <File URL="Debug\T4100\YemekSepeti.app" Target="T4100/Debug"/>
+    <File URL="Debug\T4200\YemekSepeti.app" Target="T4200/Debug"/>
+    <File URL="Debug\M4100\YemekSepeti.app" Target="M4100/Debug"/>
+    <File URL="Resources\DebugFlags" Target="*/Debug"/>
+	<File URL="Resources\CodePages\windows-1251.cp"/>
+	<File URL="Resources\Fonts\CHICAM12.fnt"/>
+	<File URL="Resources\Fonts\VT9X13.fnt"/>
+	<File URL="Resources\Fonts\T4100\AbSerif.fnt" Target="T4100/*"/>
+	<File URL="Resources\Fonts\T4200\AbSerif.fnt" Target="T4200/*"/>
+	<File URL="Resources\Fonts\M4100\AbSerif.fnt" Target="M4100/*"/>
+	<File URL="Resources\Scripts\prompts.xml" Target="T4100/*"/>
+	<File URL="Resources\Scripts\prompts.xml" Target="T4200/*"/>
+    	<File URL="Resources\Scripts\prompts_M2.xml" Target="M4100/*"/>
+	<File URL="Resources\Scripts\receipt.pcl"/>
+	<File URL="Resources\Scripts\rp_head_common.pcl"/>
+	<File URL="Resources\Scripts\audit.pcl"/>
+	<File URL="Resources\Scripts\summary.pcl"/>
+	<File URL="Resources\Scripts\rp_head_mrch.pcl"/>
+	<File URL="Resources\Scripts\termconf_bits.script"/>
+	<File URL="Resources\Scripts\mainmenu.mnu"/>
+	<File URL="Resources\Scripts\prjrn.pcl"/>
+	<File URL="Resources\Scripts\prtotals.pcl"/>
+	<File URL="Resources\Scripts\status_flags.script"/>
+	<File URL="Resources\Config.FMT"/>
+    <File URL="Resources\Images\hypercom.bmp"/>
+    <File URL="Resources\Images\siparislogo.bmp"/>
+    <File URL="Resources\Images\yemeksepetilogo.bmp"/>
+    <File URL="Resources\Images\T4100\img_arrow_up_1" Target="T4100/*"/>
+    <File URL="Resources\Images\T4100\img_arrow_up_1" Target="T4200/*"/>
+	<File URL="Resources\Images\M4100\img_arrow_up_1" Target="M4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_down_1" Target="T4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_down_1" Target="T4200/*"/>
+	<File URL="Resources\Images\M4100\img_arrow_down_1" Target="M4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_left_1" Target="T4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_left_1" Target="T4200/*"/>
+	<File URL="Resources\Images\M4100\img_arrow_left_1" Target="M4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_right_1" Target="T4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_right_1" Target="T4200/*"/>
+	<File URL="Resources\Images\M4100\img_arrow_right_1" Target="M4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_up_2" Target="T4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_up_2" Target="T4200/*"/>
+	<File URL="Resources\Images\M4100\img_arrow_up_2" Target="M4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_down_2" Target="T4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_down_2" Target="T4200/*"/>
+	<File URL="Resources\Images\M4100\img_arrow_down_2" Target="M4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_left_2" Target="T4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_left_2" Target="T4200/*"/>
+	<File URL="Resources\Images\M4100\img_arrow_left_2" Target="M4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_right_2" Target="T4100/*"/>
+	<File URL="Resources\Images\T4100\img_arrow_right_2" Target="T4200/*"/>
+	<File URL="Resources\Images\M4100\img_arrow_right_2" Target="M4100/*"/>
+	<File URL="Resources\Images\T4100\img_ok" Target="T4100/*"/>
+	<File URL="Resources\Images\T4100\img_ok" Target="T4200/*"/>
+      </Files>
+      <StartUp CommandLine=""/>
+</Application>

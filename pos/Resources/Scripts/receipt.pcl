@@ -1,0 +1,510 @@
+	// reset everything
+	
+	reset();
+
+	repeat_count(1);
+	graphics("hypercom.bmp");
+	// un-comment line below to set a DEFAULT_FONT for this receipt
+	define(DEFAULT_FONT, "VT9X13.fnt");
+
+	
+	// Since data maps do not include yet some needed data 
+	// some constants need to be defined here for testing purposes 
+	// These will later have to be added and accessed like other data through datamaps.
+
+	define(TRANS_MAP, "TransactionData");
+
+	// Options for terminal configuration
+	// Include the option bits file
+
+	include("termconf_bits.script");
+	include("status_flags.script");
+	
+	// extract the term config bits into a variable to access bits later using it. 
+
+	$termConfigOpts = map_value(TRANS_MAP, "TERMINAL_OPT1");
+
+	// get the terminal's currency symbol
+
+	$curSymbol = map_value(TRANS_MAP, "TERMINAL_CURRENCY_SYMBOL"); 
+	
+//      Un-comment line below to select DEFAULT_FONT as earlier defined
+	select_fnt(DEFAULT_FONT);
+
+//  ****************** LINE 1-4 ******************
+// Print Receipt Header
+	
+	// Print the first 4 lines with the merchant name and the terminal id
+	// from an include header file
+	
+	include("rp_head_mrch.pcl");
+
+
+//  ****************** LINE 5 ********************
+// Print Merchant Number
+
+	// align everything back to the left 
+
+	left();
+	
+	printf("MERCHANT #: ");
+
+	right();
+
+	
+	$termMID = map_value(TRANS_MAP,"TR ACCEPTOR ID");
+	
+	if ($termMID != "")
+	
+	{
+		printf($termMID);
+	}
+
+	line();
+	
+
+//  ******************* LINE 6 ********************
+	line();
+
+
+//  ******************* LINE 7 ********************
+// Print Card Issuer name	
+	
+	// Align to the left
+	left();
+
+	$issName = map_value(TRANS_MAP,"TR ISSUER NAME");
+
+	if ( $issName != "" )
+	
+	{	
+		printf($issName);
+		line();
+	}
+
+
+//  ******************* LINE 8 ********************
+// Take care of PAN 
+	
+	// get the PAN
+
+	$nontruncPAN = map_value(TRANS_MAP,"TR PAN");
+    
+	if ( $nontruncPAN != "" )
+
+	{
+		//PAN trancation enabled?
+		if ($termConfigOpts&TC6_TRUNCPAN)
+	
+		{
+		
+			//Is this either a 2-part paper or customer copy? 
+			//(How do we determine that this is a customer copy? )		
+	
+			if ($termConfigOpts&TC6_NOSECOND)
+		
+			{
+				// Trancate PAN
+			
+				$printPANx = mult_char("*",12);
+			
+				printf( $printPANx );
+				
+				// Print the last 4 PAN digits
+			
+				$truncPAN = field_right($nontruncPAN, 4);
+
+				printf($truncPAN);
+			
+			}
+	
+			// This is the merchant copy of receipt
+	
+			else
+	
+			{
+				// Print without PNA trancation	
+			
+				printf($nontruncPAN);
+	
+			}
+		
+		}	
+	
+		// PAN truncation disabled 
+
+		else
+	
+		{
+			// Print without PNA trancation	
+		
+			printf($nontruncPAN);
+
+		}   // end if PAN truncation is enabled
+		
+
+	}   // end if PAN is not ""
+
+	line();
+
+//  ******************* LINE 9 *******************
+//Print Transaction type name
+
+	bold();
+
+	printf(map_value(TRANS_MAP,"TR NAME"));
+
+
+//  ******************* LINE 10 *******************
+//Print card expiration date
+	
+	no_bold();
+
+	if (map_value(TRANS_MAP,"TR EXP DATE") != "")
+	
+		{
+			// get month in MM (01-12) format
+			$exp_dt_mm = map_value(TRANS_MAP,"TR EXP DATE","%m");
+		
+			// get year in YY (00-99) format
+			$exp_dt_yy = map_value(TRANS_MAP,"TR EXP DATE","%y");
+						
+			right();
+			
+			printf("EXP.:  ", $exp_dt_mm, "/", $exp_dt_yy); 
+				
+		}
+
+	line();
+
+	
+
+
+	
+//  ******************* LINE 11 *******************
+// Print Batch number & Invoice
+
+	// The Batch number will have to be available somewhere. 
+	// In CPOS there was a separate struct batch_rec (in struct.h)
+	// that held FLD_BATNO among other fields 
+	// Should HFC have smth like that? 
+	
+	// Print a pre-set batch number. 
+	// test printing of constants in a HFC PCL script
+
+	left();
+	printf("BATCH: ", map_value(TRANS_MAP, "TR BATCH NO"));
+
+	// Print Invoice number 
+	
+	right();
+	$invoice = map_value(TRANS_MAP,"TR INVOICE");
+	printf("INVOICE: ",$invoice );
+	line();
+	
+//  ******************* LINE 12 *******************
+// Print transaction date in following format: MON DD, YY & Transaction Time
+
+	// Print Date
+
+	left();
+	
+	$tr_dt = map_value(TRANS_MAP, "TR DATETIME", "%b %d, %y");
+
+	printf("DATE: ", $tr_dt);
+	
+	// if terminal configuration options's "print time" flag is set, 
+	// then print the time.
+
+	if ($termConfigOpts&TC1_PR_TIME)	
+	
+	{
+		right();
+		
+		// This format was used here in CPOS:
+		// MILITARY TIME HH:MM.
+			
+		$tr_tm = map_value(TRANS_MAP,"TR DATETIME","%H:%M");
+
+		printf("TIME: ", $tr_tm);
+	}
+
+	line();
+
+//  ******************* LINE 13 *******************
+// Print RRN & AUTH NO
+	
+	left();
+	
+	// RRN or VOUCHER
+
+	$trRRN = map_value(TRANS_MAP,"TR RRN");
+
+	if ( $trRRN != "" )	 
+	
+	{	
+		printf("RRN: ", $trRRN);	
+	}
+
+	else if (map_value(TRANS_MAP,"TR VOUCHER") != "")
+
+	{
+		printf("VOUCHER: ", map_value(TRANS_MAP,"TR VOUCHER"));	
+		
+	}
+
+	// AUTH NO
+	
+	if ( map_value(TRANS_MAP,"TR AUTH ID")!= "")	
+	
+	{
+		right();
+		printf("AUTH NO: ", map_value(TRANS_MAP,"TR AUTH ID"));	
+	
+	}
+	
+	line();
+	
+//********************* FAILED OR OK TRANSACTION? **********************
+	//  If Transaction Failed -- do not print any other information, besides a message 
+	// regarding this fact. 
+
+	
+	$transStatus = 1;
+
+	//If responce code is not "00" or "08" - transaction is a failed one
+	
+	if ((map_value(TRANS_MAP,"TR RESP CODE") != "00"))		
+		{
+			if ((map_value(TRANS_MAP,"TR RESP CODE") != "08"))
+			{
+				$transStatus = 0;
+			}
+		}
+
+	//$transStatus = 1; // !!! UNCOMMENT THIS LINE FOR RECEIPT TESTING PURPOSES -- 
+						// IN CASE NO RESPONCE CODE IS RECEIVED, BUT YOU STILL WANT TO TEST 
+						// HOW A SUCCESSFUL RECEIPT PRINTS.
+	
+	if ( $transStatus != 1)	
+
+	{
+	
+		left();
+	
+		printf("TRANSACTION FAILED");
+	
+		line();
+	
+		printf(map_value(TRANS_MAP,"TR RESP TEXT"));
+	
+		if (map_value(TRANS_MAP,"TR ADD RESPDATA") != "")
+	
+		{
+			line();
+			printf(map_value(TRANS_MAP,"TR ADD RESPDATA"));
+		}
+		
+	}
+
+
+	// Transaction did not fail, print the rest of info. 
+	
+	else 
+	
+	{
+
+//  ******************* LINE 14 *******************
+// Print additional Host Print Data
+
+	// if HST PR DATA field exists in datamap
+
+	if (is_in_map(TRANS_MAP,"HST PR DATA"))	// Additional Host Print Data 
+						// it is defined in CPOS in appdata.c:
+						// char HSTPRDATA[S_HSTPRDATA];
+						// among other Global constants used in print handling. 
+						// where do	we get it from in HFC?
+	{
+		line();
+		printf(map_value(TRANS_MAP,"HST PR DATA"));
+		line();
+	}
+	
+	
+	
+//  ******************* LINE 15 - 18/19 ***********
+	// Print Base, Tip & Total
+
+
+	// If there is some amount in the Transaction Tip field -- 
+	// print the base amount and the tip amount 
+
+	if (map_value(TRANS_MAP,"TR TIP AMT") != "")
+		
+	{
+		line();
+
+		// Print the base amount
+		
+		left();	
+	
+		printf("BASE");
+	
+		right();
+		
+		$baseamt = map_value(TRANS_MAP,"TR BASE AMT");
+	
+		printf( $curSymbol ); 
+	
+		printf( $baseamt );
+	
+		line();
+
+		// Print the tip amount	
+	
+		left();
+	
+		printf( "TIP" );
+
+		right();
+
+		$tipamt = map_value(TRANS_MAP,"TR TIP AMT");
+	
+		printf( $tipamt );
+		
+		line();
+	
+		right();
+		
+		$printLine1 = mult_char("_",9);
+	
+		printf( $printLine1 );
+
+		line();
+	}
+	
+	//need to use DOUBLE formatting function 
+	//that sets printing charater to double width in size,
+	//but curretly do not have it. 
+	//will use bold() for testing purposes
+
+	// Print Total amount 
+	
+	left();
+	
+	double();
+	
+	printf("TOTAL");
+
+	right();
+	$opts = map_value(TRANS_MAP, "TR NAME");
+	if ( $opts == "REFUND" )
+	{
+		printf( "-" );
+	}
+	
+	printf( $curSymbol ); 
+	
+	printf(map_value(TRANS_MAP,"TR TOTAL AMT"));
+	
+	no_double();
+	
+	line();
+	line();
+	$stat = map_value(TRANS_MAP, "TR STATUS" );
+	if ( field_mid($stat, SF_REPRINT, 1 ) ) // trans batch review
+	{
+	   center();		
+	   printf("***DUPLICATE***");	
+	   left();	
+	}
+	line();
+
+
+	// Print Card Holder Name
+
+	if (is_in_map(TRANS_MAP,"TR HOLDER NAME"))
+	{
+
+		if(map_value(TRANS_MAP,"TR HOLDER NAME") != "")
+	
+		{
+	
+			left();
+	
+			printf(map_value(TRANS_MAP,"TR HOLDER NAME"));
+		
+			line();
+	
+		}
+	}
+
+	// need to check if signature capture is on and if 
+	// we need to print the captured signature here, 
+	// where do we get it from? 
+	// where is it stored in HFC?
+	// SIG, 
+	// for the time being there is no signature printing
+	
+	line();
+	line();
+
+	left();
+	
+	printf("X");
+	
+	$printLine2 = mult_char("_",50);
+	
+	printf( $printLine2 );
+
+	// we don't have any of these defined anywhere. 
+	// In CPOS this was defined in a separate English text file. 
+	// How are we planning to handle different languages in receipts? 
+	// All above printed strings, like "TOTAL", etc have the same issue. 
+	// for the time being multi-language support will be provided by creating different receipt files 
+	// for different languages. 
+	// (this raises some issues with being able to set things from TermMaster)
+
+	
+	// Aggrmt line 1
+
+	line();
+	line();
+
+	center();
+	
+	printf("I AGREE TO PAY ABOVE TOTAL AMOUNT");
+	
+	
+	// Aggrmt line 2
+
+	line();
+
+	center();
+	
+	printf("ACCORDING TO CARD ISSUER AGREEMENT");
+	
+	
+	// Aggrmt line 3
+
+	line();
+
+	center();
+	
+	printf("MERCHANT AGREEMENT IF CREDIT VOUCHER.");
+	
+	line();
+
+	} 
+	// end if Transaction has not failed 
+
+
+	///**************** RECEIPT FOOTER TEXT LINES *********************
+
+	cut();
+
+	line();
+	line();
+	
+
+

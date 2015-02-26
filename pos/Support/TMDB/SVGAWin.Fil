@@ -1,0 +1,7 @@
+20 25 900 700 Main window
+40 45 860 670 Viewer window
+255 255 0 Hilight text RGB 's
+255 0 0 1 Hilight ring RGB 's
+0 0 255 Viewer text RGB 's
+128 128 128 Type/Level display RGB 's
+0 0 0 Mouse move RGB 's

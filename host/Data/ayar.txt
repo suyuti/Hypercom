@@ -1,0 +1,6 @@
+Star(Baslat)->Run(Çalistir)->cmd.exe
+
+CACLS C:\Inetpub\wwwroot\aspx\ASPNETDBAdminControl\database\data.mdb /E /G Everyone:F //entera bas 
+
+alintidir->mania
+

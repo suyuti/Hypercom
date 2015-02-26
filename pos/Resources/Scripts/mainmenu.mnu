@@ -1,0 +1,19 @@
+#
+#{MAINMENU, Ana Menu,
+#        Modem Test,     "tr modemtest",
+#        Eth. Test,      "tr ethtest",
+#        GPRS Test,      "tr gprstest",
+#        CIKIS,          "Quit"
+#
+#}
+#
+
+{MAINMENU, Yemek Sepeti,
+        Siparisler,     "TrSiparisler",
+        Raporlar,       "TrRaporlar",
+        Ayarlar,        "TrAyarlar",
+        CIKIS,          "Quit"
+
+}
+
+

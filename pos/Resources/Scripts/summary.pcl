@@ -1,0 +1,106 @@
+// reset everything
+	
+	reset();
+
+	repeat_count(1);
+	graphics("hypercom.bmp");
+	
+	// get the terminal's currency symbol
+
+	$curSymbol = map_value("TransactionData","TERM CURNCY SYMB"); 
+
+//  ****************** LINE 1-4 ******************
+// Print Receipt Header
+	
+	// Print the first 4 lines with the merchant name and the terminal id
+	// from an include header file
+	
+	include("rp_head_common.pcl");
+
+
+//  ****************** LINE 5 ********************
+
+	// align everything back to the left 
+
+	left();
+	
+	printf("Transaction totals by issuer");
+
+	right();
+
+	printf(map_value("TransactionData", "TR DATETIME", "%b %d, %y"), "\n\n");
+	
+//  ****************** ISSUERS ********************
+
+	$issuers_map = "ISSUERS_MAP";
+	$issuer_grand_totals = "GRAND TOTALS";
+	$amounts_map = "AMOUNTS_MAP";
+	$sales = "SALES";
+	$refunds = "REFUNDS";
+	$total = "TOTAL";
+	$cont = true;
+	$step = 1;
+	if (!map_is_empty($issuers_map))
+	{
+		map_rewind($issuers_map);
+
+		while ( $cont )
+		{
+			if ( $step == 1 )
+			{
+				$issuer = map_index($issuers_map);
+			}
+
+			if ( $issuer != $issuer_grand_totals || $step == 2 )
+			{
+				left();
+				bold();
+				printf( $issuer, "\n" );
+				no_bold();	
+				printf( $sales ); 
+				center();
+				printf( map_value($amounts_map, $issuer."#".$sales) );
+				right();
+				printf( $curSymbol, map_value($amounts_map, $issuer."$".$sales ), "\n");
+				left();
+				printf( $refunds );
+				center();
+				printf( map_value($amounts_map, $issuer."#".$refunds ) );
+				right();
+				printf( "-", $curSymbol, map_value($amounts_map, $issuer."$".$refunds ), "\n");
+				left();
+				printf( $total );
+				center();
+				printf( map_value($amounts_map, $issuer."#".$total ) );
+				right();
+				printf( $curSymbol, map_value($amounts_map, $issuer."$".$total ), "\n\n");
+			}
+
+			if ( $step == 1 )
+			{
+				$cont = next_map_record($issuers_map);
+				if ( !$cont )
+				{
+					$step = 2;
+					$issuer = $issuer_grand_totals;
+					$cont = true;
+				}
+			}
+			else
+			{
+				$cont = false;
+			}
+		}
+
+	}
+	
+
+///**************** RECEIPT FOOTER TEXT LINES *********************
+
+	cut();
+
+	line();
+	line();
+	
+
+

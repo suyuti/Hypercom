@@ -1,0 +1,486 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	WorkingDir="."
+	BuildSystem="vsbuild"
+	BuildMakeFile=""
+	VCSProject='SCC:Microsoft Visual SourceSafe:"$/posvs.root/posvs/pos", ARAAAAAA'
+	VCSLocalPath="SCC:Microsoft Visual SourceSafe:g:\calisma\yemeksepeti\pos"
+	VCSAuxPath="G:\calisma\yemeksepeti\vss">
+	<Config
+		Name="Debug"
+		Type="gnuc"
+		DebugCallbackName="gdb"
+		Version="1"
+		OutputFile="%bdYemekSepeti.elf"
+		CompilerConfigName="Latest Version"
+		Defines='"/DDDL_MODULE" "/D_INCLUDE_HYPERCOM_APPMGR_" "/D_INCLUDE_NUCLEUS_GRAFIX_" "/D_DEBUG" "/DPLATFORM_%(PLATFORM)" "/D_INCLUDE_HYPERCOM_SECPROV_" "/DDYNAMIC_MEMORY_SIZE=%(DYNAMIC_MEMORY_SIZE)" "/DAPPLICATION_STACK_SIZE=%(APPLICATION_STACK_SIZE)" %(PLATFORM_SPECIFIC_DEFINES)'
+		ObjectDir="%rw%B/%(PLATFORM)">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec
+					CmdLine='%(CC) -c %xup %defd -O0 -g -fpic -o "%bd%n%oe" %i "%f" %~other'
+					OtherOptions="%(CCFLAGS_DEBUG) -fno-exceptions -fno-rtti"/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link"
+				ShowOnMenu="Never"
+				Dialog="_gnuc_options_form Link"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw"
+				ClearProcessBuffer="1">
+				<Exec
+					CmdLine='%(LINK) %xup -o "%o" %objs %~other'
+					OtherOptions='-shared --allow-multiple-definition --no-undefined --defsym HEAPSIZE=%(HEAPSIZE_DEBUG) %(LIBC_DIRS) -T OptimumDBG.x -M -Map "%bd%on.map"'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw"
+				Beep="1"
+				ClearProcessBuffer="1"
+				Dialog="_gnuc_options_form Compile"
+				DependsRef="Debug"
+				Verbose="1">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t Build'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw"
+				Beep="1"
+				ClearProcessBuffer="1"
+				Dialog="_gnuc_options_form Compile"
+				DependsRef="Debug"
+				Verbose="1">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+			</Target>
+			<Target
+				Name="Clean"
+				MenuCaption="&amp;Clean"
+				RunFromDir="%bd"
+				DependsRef="Debug">
+				<Exec CmdLine="%(GNU_TOOLS_BIN)\rm -f *.*"/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+			<Target
+				Name="dash"
+				MenuCaption="-"
+				Deletable="0">
+				<Exec/>
+			</Target>
+			<Target
+				Name="GNU C Options"
+				MenuCaption="GNU C &amp;Options..."
+				ShowOnMenu="HideIfNoCmdLine"
+				Deletable="0"
+				SaveOption="SaveNone">
+				<Exec
+					CmdLine="gnucoptions"
+					Type="Slick-C"/>
+			</Target>
+		</Menu>
+		<Includes>
+			<Include Dir="%(HFC_ROOT)/Inc"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/Nucleus"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/Hypercom"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/Nucleus/Plus"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/MainAppForAppMgr"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/Plus"/>
+			<Include Dir="%(AAE_ROOT)/Inc"/>
+		</Includes>
+		<Libs PreObjects="0">
+			<Lib File="-("/>
+			<Lib File="'%(HFC_ROOT)/Lib/hfcd.lib'"/>
+			<Lib File="'%(HFC_ROOT)/Lib/EMV_L2.lib'"/>
+			<Lib File="-lstdc++"/>
+			<Lib File="-lc"/>
+			<Lib File="-lgcc"/>
+			<Lib File="-lm"/>
+			<Lib File="%(OS_LIBS)"/>
+			<Lib File="%(AAE_LIBS)"/>
+			<Lib File="'%(HFC_ROOT)/Lib/Zlibd.lib'"/>
+			<Lib File="'%(HFC_ROOT)/Lib/parserXMLd.lib'"/>
+			<Lib File="-)"/>
+		</Libs>
+		<PostBuildCommands>
+			<Exec CmdLine='%(GNU_TOOLS_BIN)\make -f app.mak VSECONFIG=%B APPNAME=%ON BLD=%(DAL) DEVTYPE=%(PLATFORM) GNU_TOOLS="%(GNU_TOOLS)" PACKINGLISTBUILDER="%(PACKINGLISTBUILDER)" BINFORMAT=%(BINFORMAT)'/>
+		</PostBuildCommands>
+	</Config>
+	<Config
+		Name="Release"
+		Type="gnuc"
+		DebugCallbackName="gdb"
+		Version="1"
+		OutputFile="%bdYemekSepeti.elf"
+		CompilerConfigName="Latest Version"
+		Defines='"/DDDL_MODULE" "/D_INCLUDE_HYPERCOM_APPMGR_" "/D_INCLUDE_NUCLEUS_GRAFIX_" "/DNDEBUG" "/DPLATFORM_%(PLATFORM)" "/D_INCLUDE_HYPERCOM_SECPROV_" "/DDYNAMIC_MEMORY_SIZE=%(DYNAMIC_MEMORY_SIZE)" "/DAPPLICATION_STACK_SIZE=%(APPLICATION_STACK_SIZE)" %(PLATFORM_SPECIFIC_DEFINES)'
+		ObjectDir="%rw%B/%(PLATFORM)">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec
+					CmdLine='%(CC) -c %xup %defd -fpic -o "%bd%n%oe" %i "%f" %~other'
+					OtherOptions="%(CCFLAGS_RELEASE) -fno-exceptions -fno-rtti"/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link"
+				ShowOnMenu="Never"
+				Dialog="_gnuc_options_form Link"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw"
+				ClearProcessBuffer="1">
+				<Exec
+					CmdLine='%(LINK) %xup -o "%o" %objs %~other'
+					OtherOptions='-shared --allow-multiple-definition --no-undefined -s --defsym HEAPSIZE=%(HEAPSIZE_RELEASE) %(LIBC_DIRS) -T Optimum.x -M -Map "%bd%on.map"'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw"
+				Beep="1"
+				ClearProcessBuffer="1"
+				Dialog="_gnuc_options_form Compile"
+				DependsRef="Release"
+				Verbose="1">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t build'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw"
+				Beep="1"
+				ClearProcessBuffer="1"
+				Dialog="_gnuc_options_form Compile"
+				DependsRef="Release"
+				Verbose="1">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+			</Target>
+			<Target
+				Name="Clean"
+				MenuCaption="&amp;Clean"
+				RunFromDir="%bd"
+				DependsRef="Release">
+				<Exec CmdLine="%(GNU_TOOLS_BIN)\rm -f *.*"/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+			<Target
+				Name="dash"
+				MenuCaption="-"
+				Deletable="0">
+				<Exec/>
+			</Target>
+			<Target
+				Name="GNU C Options"
+				MenuCaption="GNU C &amp;Options..."
+				ShowOnMenu="HideIfNoCmdLine"
+				Deletable="0"
+				SaveOption="SaveNone">
+				<Exec
+					CmdLine="gnucoptions"
+					Type="Slick-C"/>
+			</Target>
+		</Menu>
+		<Includes>
+			<Include Dir="%(HFC_ROOT)/Inc"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/Nucleus"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/Hypercom"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/Nucleus/Plus"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/MainAppForAppMgr"/>
+			<Include Dir="%(APPMGR_ROOT)/Inc/Plus"/>
+			<Include Dir="%(AAE_ROOT)/Inc"/>
+		</Includes>
+		<Libs PreObjects="0">
+			<Lib File="-("/>
+			<Lib File="'%(HFC_ROOT)/Lib/hfc.lib'"/>
+			<Lib File="'%(HFC_ROOT)/Lib/EMV_L2.lib'"/>
+			<Lib File="-lstdc++"/>
+			<Lib File="-lc"/>
+			<Lib File="-lgcc"/>
+			<Lib File="-lm"/>
+			<Lib File="%(OS_LIBS)"/>
+			<Lib File="%(AAE_LIBS)"/>
+			<Lib File="'%(HFC_ROOT)/Lib/Zlib.lib'"/>
+			<Lib File="'%(HFC_ROOT)/Lib/parserXML.lib'"/>
+			<Lib File="-)"/>
+		</Libs>
+		<PostBuildCommands>
+			<Exec CmdLine='%(GNU_TOOLS_BIN)\make -f app.mak VSECONFIG=%B APPNAME=%ON BLD=%(DAL) DEVTYPE=%(PLATFORM) GNU_TOOLS="%(GNU_TOOLS)" PACKINGLISTBUILDER="%(PACKINGLISTBUILDER)" BINFORMAT=%(BINFORMAT)'/>
+		</PostBuildCommands>
+		<Dependencies Name="Release">
+		</Dependencies>
+	</Config>
+	<Files>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl">
+			<F N="Src/AmexHost.cpp"/>
+			<F N="Src/AmexHost.hpp"/>
+			<F N="Src/BasicHost.cpp"/>
+			<F N="Src/BasicHost.hpp"/>
+			<F N="Src/BasicISOHost.cpp"/>
+			<F N="Src/BasicISOHost.hpp"/>
+			<F N="Src/BasicTransaction.cpp"/>
+			<F N="Src/BasicTransaction.hpp"/>
+			<F N="Src/BatchTotalPage.cpp"/>
+			<F N="Src/BatchTotalPage.hpp"/>
+			<F N="Src/CardSwipe.h"/>
+			<F N="Src/DDLMain.cpp"/>
+			<F N="Src/DemoHost.cpp"/>
+			<F N="Src/DemoHost.hpp"/>
+			<F N="Src/DocumentManager.cpp"/>
+			<F N="Src/DocumentManager.hpp"/>
+			<F N="Src/HostFactory.cpp"/>
+			<F N="Src/HostFactory.hpp"/>
+			<F N="Src/HypercomHost.cpp"/>
+			<F N="Src/HypercomHost.hpp"/>
+			<F N="Src/ico_card.h"/>
+			<F N="Src/ISO8583_Adjust.cpp"/>
+			<F N="Src/ISO8583_Adjust.hpp"/>
+			<F N="Src/ISO8583_Auth.cpp"/>
+			<F N="Src/ISO8583_Auth.hpp"/>
+			<F N="Src/ISO8583_BatchUpload.cpp"/>
+			<F N="Src/ISO8583_BatchUpload.hpp"/>
+			<F N="Src/ISO8583_Offline.cpp"/>
+			<F N="Src/ISO8583_Offline.hpp"/>
+			<F N="Src/ISO8583_Refund.cpp"/>
+			<F N="Src/ISO8583_Refund.hpp"/>
+			<F N="Src/ISO8583_Reversal.cpp"/>
+			<F N="Src/ISO8583_Reversal.hpp"/>
+			<F N="Src/ISO8583_Sale.cpp"/>
+			<F N="Src/ISO8583_Sale.hpp"/>
+			<F N="Src/ISO8583_Settle.cpp"/>
+			<F N="Src/ISO8583_Settle.hpp"/>
+			<F N="Src/ISO8583_STrailer.cpp"/>
+			<F N="Src/ISO8583_STrailer.hpp"/>
+			<F N="Src/MemFile.cpp"/>
+			<F N="Src/MemFile.hpp"/>
+			<F N="Src/MultiLang.cpp"/>
+			<F N="Src/MultiLang.hpp"/>
+			<F N="Src/PromptsDef.h"/>
+			<F N="Src/TransportFactory.cpp"/>
+			<F N="Src/TransportFactory.hpp"/>
+			<F N="Src/UIScreenFactory.cpp"/>
+			<F N="Src/UIScreenFactory.hpp"/>
+			<F N="Src/Visa_Financial.cpp"/>
+			<F N="Src/Visa_Financial.hpp"/>
+			<F N="Src/Visa_Message.cpp"/>
+			<F N="Src/Visa_Message.hpp"/>
+			<F N="Src/Visa_Settle.cpp"/>
+			<F N="Src/Visa_Settle.hpp"/>
+			<F N="Src/VisaHost.cpp"/>
+			<F N="Src/VisaHost.hpp"/>
+			<F N="Src/YemekSepetiConfig.cpp"/>
+			<F N="Src/YemekSepetiConfig.hpp"/>
+			<F N="Src/YemekSepetiConfig_parser.cpp"/>
+			<F N="Src/YemekSepetiMain.cpp"/>
+			<F N="Src/YemekSepetiMain.hpp"/>
+			<F N="Src/YemekSepetiTags.h"/>
+		</Folder>
+		<Folder
+			Name="Resources"
+			Filters="">
+			<Folder
+				Name="Scripts"
+				Filters="">
+				<F N="Resources/Scripts/audit.pcl"/>
+				<F N="Resources/Scripts/mainmenu.mnu"/>
+				<F N="Resources/Scripts/prjrn.pcl"/>
+				<F N="Resources/Scripts/prompts.xml"/>
+				<F N="Resources/Scripts/prompts_M2.xml"/>
+				<F N="Resources/Scripts/prtotals.pcl"/>
+				<F N="Resources/Scripts/receipt.pcl"/>
+				<F N="Resources/Scripts/rp_head_common.pcl"/>
+				<F N="Resources/Scripts/rp_head_mrch.pcl"/>
+				<F N="Resources/Scripts/status_flags.script"/>
+				<F N="Resources/Scripts/summary.pcl"/>
+				<F N="Resources/Scripts/termconf_bits.script"/>
+			</Folder>
+			<F N="Resources/config.FMT"/>
+			<F N="Resources/DebugFlags"/>
+			<F N="Resources/hxp-files.xml"/>
+		</Folder>
+		<Folder
+			Name="Steps"
+			Filters="">
+			<F N="Src/DlgSoruSor.cpp"/>
+			<F N="Src/DlgSoruSor.hpp"/>
+			<F N="Src/StepAnketBaslat.cpp"/>
+			<F N="Src/StepAnketBaslat.hpp"/>
+			<F N="Src/StepAnketSec.cpp"/>
+			<F N="Src/StepAnketSec.hpp"/>
+			<F N="Src/StepFactory.cpp"/>
+			<F N="Src/StepFactory.hpp"/>
+			<F N="Src/StepHostCommunicate.cpp"/>
+			<F N="Src/StepHostCommunicate.hpp"/>
+			<F N="Src/StepModemTest.cpp"/>
+			<F N="Src/StepModemTest.hpp"/>
+			<F N="Src/StepSiparisListeGoster.cpp"/>
+			<F N="Src/StepSiparisListeGoster.hpp"/>
+			<F N="Src/StepSoruSor.cpp"/>
+			<F N="Src/StepSoruSor.hpp"/>
+			<F N="Src/ThreadRing.cpp"/>
+			<F N="Src/ThreadRing.hpp"/>
+		</Folder>
+		<Folder
+			Name="Transactions"
+			Filters="">
+			<F N="Src/TransactionDefault.cpp"/>
+			<F N="Src/TransactionDefault.hpp"/>
+			<F N="Src/TransactionFactory.cpp"/>
+			<F N="Src/TransactionFactory.hpp"/>
+			<F N="Src/TransactionTags.cpp"/>
+			<F N="Src/TransactionTags.h"/>
+			<F N="Src/TransactionUtility.cpp"/>
+			<F N="Src/TransactionUtility.hpp"/>
+			<F N="Src/TransAnketYap.cpp"/>
+			<F N="Src/TransAnketYap.hpp"/>
+			<F N="Src/TransModemTest.cpp"/>
+			<F N="Src/TransModemTest.hpp"/>
+			<F N="Src/TransSiparisler.cpp"/>
+			<F N="Src/TransSiparisler.hpp"/>
+		</Folder>
+		<Folder
+			Name="ScreenBase"
+			Filters="">
+			<F N="Src/SCREEN~1/AppWindow.cpp"/>
+			<F N="Src/SCREEN~1/AppWindow.hpp"/>
+			<F N="Src/SCREEN~1/BaseScreen.cpp"/>
+			<F N="Src/SCREEN~1/BaseScreen.hpp"/>
+			<F N="Src/SCREEN~1/MainWindow.cpp"/>
+			<F N="Src/SCREEN~1/MainWindow.hpp"/>
+		</Folder>
+		<Folder
+			Name="Screens"
+			Filters="">
+			<F N="Src/Screens/Defines.hpp"/>
+			<F N="Src/Screens/FirstScreen.cpp"/>
+			<F N="Src/Screens/FirstScreen.hpp"/>
+			<F N="Src/Screens/SecondScreen.cpp"/>
+			<F N="Src/Screens/SecondScreen.hpp"/>
+		</Folder>
+		<Folder
+			Name="Comm"
+			Filters="">
+			<F N="Src/comm/POSComm.cpp"/>
+			<F N="Src/comm/POSComm.hpp"/>
+		</Folder>
+		<Folder
+			Name="Utils"
+			Filters="">
+			<F N="Src/Utils/FileSysUtils.cpp"/>
+			<F N="Src/Utils/FileSysUtils.hpp"/>
+			<F N="Src/Utils/Split.cpp"/>
+		</Folder>
+		<Folder
+			Name="Moduller"
+			Filters="">
+			<F N="Src/Moduller/Base.h"/>
+			<F N="Src/Moduller/FileSiparis.cpp"/>
+			<F N="Src/Moduller/FileSiparis.hpp"/>
+			<F N="Src/Moduller/Globals.cpp"/>
+			<F N="Src/Moduller/Globals.h"/>
+			<F N="Src/Moduller/IPUpdater.cpp"/>
+			<F N="Src/Moduller/IPUpdater.h"/>
+			<F N="Src/Moduller/Message.cpp"/>
+			<F N="Src/Moduller/Message.hpp"/>
+			<F N="Src/Moduller/POSServer.cpp"/>
+			<F N="Src/Moduller/POSServer.h"/>
+			<F N="Src/Moduller/RingListener.cpp"/>
+			<F N="Src/Moduller/RingListener.hpp"/>
+			<F N="Src/Moduller/SiparisData.cpp"/>
+			<F N="Src/Moduller/SiparisData.h"/>
+			<F N="Src/Moduller/SystemManager.cpp"/>
+			<F N="Src/Moduller/SystemManager.h"/>
+			<F N="Src/Moduller/XMLParser.cpp"/>
+			<F N="Src/Moduller/XMLParser.hpp"/>
+			<F N="Src/Moduller/YemekSepetiClient.cpp"/>
+			<F N="Src/Moduller/YemekSepetiClient.hpp"/>
+		</Folder>
+	</Files>
+	<Macro>
+	</Macro>
+	<Dependencies Name="Build">
+	</Dependencies>
+	<CompatibleVersions>
+		<PrevVersion VersionNumber="9.1"/>
+	</CompatibleVersions>
+</Project>

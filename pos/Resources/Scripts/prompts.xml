@@ -1,0 +1,510 @@
+﻿<Application>
+	<Fonts>
+		<Font Name="English" Target="Prompts" Performance="Normal">
+			<File Name="CHICAM12.fnt">
+			</File>
+		</Font>
+		<Font Name="Russian" Target="Prompts" Performance="Normal">
+			<File Name="AbSerif.fnt">
+			</File>
+		</Font>
+	</Fonts>
+	<Prompts>
+		<Lang Name="English">
+			<Msg ID="Unknown message">
+				<Body Text="Unknown message">
+				</Body>
+			</Msg>
+			<Msg ID="No access to journal">
+				<Body Text="No access to journal">
+				</Body>
+			</Msg>
+			<Msg ID="No access to amount">
+				<Body Text="No access to amount">
+				</Body>
+			</Msg>
+			<Msg ID="No dynamic memory">
+				<Body Text="No dynamic memory">
+				</Body>
+			</Msg>
+			<Msg ID="Total %c%s correct?">
+				<Body Text="Total %c%s correct?">
+				</Body>
+			</Msg>
+			<Msg ID="Journal: no access to card acceptor">
+				<Body Text="Journal: no access to card acceptor">
+				</Body>
+			</Msg>
+			<Msg ID="Journal: no access to status flags">
+				<Body Text="Journal: no access to status flags">
+				</Body>
+			</Msg>
+			<Msg ID="Journal: no access to type">
+				<Body Text="Journal: no access to type">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction: no card acceptor">
+				<Body Text="Transaction: no card acceptor">
+				</Body>
+			</Msg>
+			<Msg ID="No access to configuration">
+				<Body Text="No access to configuration">
+				</Body>
+			</Msg>
+			<Msg ID="Sales total %c%s correct?">
+				<Body Text="Sales total %c%s correct?">
+				</Body>
+			</Msg>
+			<Msg ID="Refunds total %c%s correct?">
+				<Body Text="Refunds total %c%s correct?">
+				</Body>
+			</Msg>
+			<Msg ID="Enter sales total:">
+				<Body Text="Enter sales total:">
+				</Body>
+			</Msg>
+			<Msg ID="Wrong sales total">
+				<Body Text="Wrong sales total">
+				</Body>
+			</Msg>
+			<Msg ID="Enter refunds total:">
+				<Body Text="Enter refunds total:">
+				</Body>
+			</Msg>
+			<Msg ID="Wrong refunds total">
+				<Body Text="Wrong refunds total">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction: no access to invoice">
+				<Body Text="Transaction: no access to invoice">
+				</Body>
+			</Msg>
+			<Msg ID="No access to status flags">
+				<Body Text="No access to status flags">
+				</Body>
+			</Msg>
+			<Msg ID="No access to type">
+				<Body Text="No access to type">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction: no access to PAN">
+				<Body Text="Transaction: no access to PAN">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction: no access to date/time">
+				<Body Text="Transaction: no access to date/time">
+				</Body>
+			</Msg>
+			<Msg ID="Journal: no access to issuer">
+				<Body Text="Journal: no access to issuer">
+				</Body>
+			</Msg>
+			<Msg ID="Processing settlement">
+				<Body Text="Processing settlement">
+				</Body>
+			</Msg>
+			<Msg ID="Enter amount:">
+				<Body Text="Enter amount:">
+				</Body>
+			</Msg>
+			<Msg ID="Expiration Date MMYY">
+				<Body Text="Expiration Date MMYY">
+				</Body>
+			</Msg>
+			<Msg ID="Invalid entry">
+				<Body Text="Invalid entry">
+				</Body>
+			</Msg>
+			<Msg ID="Enter invoice:">
+				<Body Text="Enter invoice:">
+				</Body>
+			</Msg>
+			<Msg ID="Duplicate Entry, Please Re-Enter">
+				<Body Text="Duplicate Entry, Please Re-Enter">
+				</Body>
+			</Msg>
+			<Msg ID="Ivalid Entry, Please Re-Enter">
+				<Body Text="Ivalid Entry, Please Re-Enter">
+				</Body>
+			</Msg>
+			<Msg ID="Enter Card Number:">
+				<Body Text="Enter Card Number:">
+				</Body>
+			</Msg>
+			<Msg ID="Unknown device ID">
+				<Body Text="Unknown device ID">
+				</Body>
+			</Msg>
+			<Msg ID="Enter password:">
+				<Body Text="Enter password:">
+				</Body>
+			</Msg>
+			<Msg ID="No access to terminal\'s password">
+				<Body Text="No access to terminal\'s password">
+				</Body>
+			</Msg>
+			<Msg ID="No access to host interface">
+				<Body Text="No access to host interface">
+				</Body>
+			</Msg>
+			<Msg ID="Enter host number (0-all):">
+				<Body Text="Enter host number (0-all):">
+				</Body>
+			</Msg>
+			<Msg ID="No access to menu">
+				<Body Text="No access to menu">
+				</Body>
+			</Msg>
+			<Msg ID="No hosts defined">
+				<Body Text="No hosts defined">
+				</Body>
+			</Msg>
+			<Msg ID="HOST NOT FOUND">
+				<Body Text="HOST NOT FOUND">
+				</Body>
+			</Msg>
+			<Msg ID="ISSUER NOT FOUND">
+				<Body Text="ISSUER NOT FOUND">
+				</Body>
+			</Msg>
+			<Msg ID="ERROR">
+				<Body Text="ERROR">
+				</Body>
+			</Msg>
+			<Msg ID="Host Response Text Not Found">
+				<Body Text="Host Response Text Not Found">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction result">
+				<Body Text="Transaction result">
+				</Body>
+			</Msg>
+			<Msg ID="TRANSACTION DOES NOT EXIST!">
+				<Body Text="TRANSACTION DOES NOT EXIST!">
+				</Body>
+			</Msg>
+			<Msg ID="BATCH EMPTY">
+				<Body Text="BATCH EMPTY!">
+				</Body>
+			</Msg>
+			<Msg ID="VOID COMPLETED">
+				<Body Text="VOID COMPLETED">
+				</Body>
+			</Msg>
+			<Msg ID="SYSTEM VERSION">
+				<Body Text="SYSTEM VERSION">
+				</Body>
+			</Msg>
+            <Msg ID="Sorry, paper out">
+               			 <Body Text="Sorry, paper out">
+               			</Body>
+  			</Msg>
+            <Msg ID="Can\'t adjust voided transaction">
+                			<Body Text="Can\'t adjust voided transaction">
+                			</Body>
+            </Msg>
+            <Msg ID="Some hosts failed to settle">
+				<Body Text="Some hosts failed to settle">
+				</Body>
+			</Msg>
+            <Msg ID="Enter PIN:">
+				<Body Text="Enter PIN:">
+				</Body>
+           	 </Msg>
+           	 <Msg ID="Processing Trans.">
+				<Body Text="Processing Trans.">
+				</Body>
+           	 </Msg>
+			<Msg ID="Host Creation">
+				<Body Text="Host Creation">
+				</Body>
+			</Msg>
+			<Msg ID="Start Transaction">
+				<Body Text="Start Transaction">
+				</Body>
+			</Msg>
+			<Msg ID="PreProcessing">
+				<Body Text="PreProcessing">
+				</Body>
+			</Msg>
+			<Msg ID="Encode Request">
+    			            <Body Text="Encode Request">
+				</Body>
+			</Msg>
+			<Msg ID="Sending Request">
+     			           <Body Text="Sending Request">
+				</Body>
+			</Msg>
+			<Msg ID="Connecting">
+				<Body Text="Connecting">
+				</Body>
+			</Msg>
+			<Msg ID="No Dial Tone">
+				<Body Text="No Dial Tone">
+				</Body>
+			</Msg>
+			<Msg ID="Waiting For Line">
+				<Body Text="Waiting For Line">
+				</Body>
+			</Msg>
+			<Msg ID="WaitingForResponse">
+				<Body Text="WaitingForResponse">
+				</Body>
+			</Msg>
+			<Msg ID="Processing Response">
+				<Body Text="Processing Response">
+				</Body>
+			</Msg>
+			<Msg ID="Decoding Response">
+				<Body Text="Decoding Response">
+				</Body>
+			</Msg>
+			<Msg ID="Post Processing">
+				<Body Text="Post Processing">
+				</Body>
+			</Msg>
+			<Msg ID="Saving to Journal">
+				<Body Text="Saving to Journal">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction Complete">
+				<Body Text="Transaction Complete">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction Failed">
+				<Body Text="Transaction Failed">
+				</Body>
+			</Msg>
+			<Msg ID="Settlement Processing">
+				<Body Text="Settlement Processing">
+				</Body>
+			</Msg>
+			<Msg ID="Unknown Host State">
+				<Body Text="Unknown Host State">
+				</Body>
+			</Msg>
+			<Msg ID="Karti okutunuz.">
+				<Body Text="Karti okutunuz.">
+				</Body>
+			</Msg>
+			<Msg ID="Reading PIN">
+				<Body Text="Reading PIN">
+				</Body>
+			</Msg>
+            <Msg ID="Inv. Number Missing">
+				<Body Text="Inv. Number Missing">
+				</Body>
+			</Msg>
+            <Msg ID="Processing">
+				<Body Text="Processing">
+				</Body>
+			</Msg>
+		</Lang>
+		<Lang Name="Russian">
+			<Msg ID="Unknown message">
+				<Body Text="Неизвестное сообщение">
+				</Body>
+			</Msg>
+			<Msg ID="No access to journal">
+				<Body Text="Нет доступа к журналу">
+				</Body>
+			</Msg>
+			<Msg ID="No access to amount">
+				<Body Text="Нет доступа к счёту">
+				</Body>
+			</Msg>
+			<Msg ID="No dynamic memory">
+				<Body Text="Нет динамической памяти">
+				</Body>
+			</Msg>
+			<Msg ID="Total %c%s correct?">
+				<Body Text="Общий %c%s корректен?">
+				</Body>
+			</Msg>
+			<Msg ID="Journal: no access to card acceptor">
+				<Body Text="Журнал: нет доступа к приёмщику карт">
+				</Body>
+			</Msg>
+			<Msg ID="Journal: no access to status flags">
+				<Body Text="Журнал: нет доступа к флагам статуса">
+				</Body>
+			</Msg>
+			<Msg ID="Journal: no access to type">
+				<Body Text="Журнал: нет доступа к печати">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction: no card acceptor">
+				<Body Text="Транзакция: нет приёмщика карт">
+				</Body>
+			</Msg>
+			<Msg ID="No access to configuration">
+				<Body Text="Нет доступа к конфигурации">
+				</Body>
+			</Msg>
+			<Msg ID="Sales total %c%s correct?">
+				<Body Text="Общие продажи %c%s правильны?">
+				</Body>
+			</Msg>
+			<Msg ID="Refunds total %c%s correct?">
+				<Body Text="Общий возврат %c%s правилен?">
+				</Body>
+			</Msg>
+			<Msg ID="Enter sales total:">
+				<Body Text="Введите общие продажи:">
+				</Body>
+			</Msg>
+			<Msg ID="Wrong sales total">
+				<Body Text="Неправильны общие продажи">
+				</Body>
+			</Msg>
+			<Msg ID="Enter refunds total:">
+				<Body Text="Введите общий возврат:">
+				</Body>
+			</Msg>
+			<Msg ID="Wrong refunds total">
+				<Body Text="Неправилен общий возврат">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction: no access to invoice">
+				<Body Text="Транзакция: нет доступа к инвойсу">
+				</Body>
+			</Msg>
+			<Msg ID="No access to status flags">
+				<Body Text="Нет доступа к флагам статуса">
+				</Body>
+			</Msg>
+			<Msg ID="No access to type">
+				<Body Text="Нет доступа к печати">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction: no access to PAN">
+				<Body Text="Транзакция: нет доступа к PAN">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction: no access to date/time">
+				<Body Text="Транзакция: нет доступа к дате/времени">
+				</Body>
+			</Msg>
+			<Msg ID="Journal: no access to issuer">
+				<Body Text="Журнал: нет доступа к выпускающему">
+				</Body>
+			</Msg>
+			<Msg ID="Processing settlement">
+				<Body Text="Урегулирование в процессе">
+				</Body>
+			</Msg>
+			<Msg ID="Enter amount:">
+				<Body Text="Введите сумму:">
+				</Body>
+			</Msg>
+			<Msg ID="Expiration Date MMYY">
+				<Body Text="Срок годности MMYY">
+				</Body>
+			</Msg>
+			<Msg ID="Invalid entry">
+				<Body Text="Неправильный ввод">
+				</Body>
+			</Msg>
+			<Msg ID="Enter invoice:">
+				<Body Text="Введите инвойс:">
+				</Body>
+			</Msg>
+			<Msg ID="Duplicate Entry, Please Re-Enter">
+				<Body Text="Двойной ввод, Пожалуйста повторите">
+				</Body>
+			</Msg>
+			<Msg ID="Ivalid Entry, Please Re-Enter">
+				<Body Text="Неправильный ввод, Повторите пожалуйста">
+				</Body>
+			</Msg>
+			<Msg ID="Enter Card Number:">
+				<Body Text="Введите номер карты:">
+				</Body>
+			</Msg>
+			<Msg ID="Unknown device ID">
+				<Body Text="Неизвестный  ID устройства">
+				</Body>
+			</Msg>
+			<Msg ID="Enter password:">
+				<Body Text="Введите пароль:">
+				</Body>
+			</Msg>
+			<Msg ID="No access to terminal\'s password">
+				<Body Text="Нет доступа к паролю терминала">
+				</Body>
+			</Msg>
+			<Msg ID="No access to host interface">
+				<Body Text="Нет доступа к интерфейсу хоста">
+				</Body>
+			</Msg>
+			<Msg ID="Enter host number (0-all):">
+				<Body Text="Ведите номер хоста (0-все):">
+				</Body>
+			</Msg>
+			<Msg ID="No access to menu">
+				<Body Text="Нет доступа к меню">
+				</Body>
+			</Msg>
+			<Msg ID="No hosts defined">
+				<Body Text="Хост неопределён">
+				</Body>
+			</Msg>
+			<Msg ID="HOST NOT FOUND">
+				<Body Text="ХОСТ НЕ НАЙДЕН">
+				</Body>
+			</Msg>
+			<Msg ID="ISSUER NOT FOUND">
+				<Body Text="ВЫПУСКАЮЩИЙ НЕ НАЙДЕН">
+				</Body>
+			</Msg>
+			<Msg ID="ERROR">
+				<Body Text="ОШИБКА">
+				</Body>
+			</Msg>
+			<Msg ID="Host Response Text Not Found">
+				<Body Text="Ответ хоста не найден">
+				</Body>
+			</Msg>
+			<Msg ID="Transaction result">
+				<Body Text="Результат транзакции">
+				</Body>
+			</Msg>
+			<Msg ID="TRANSACTION DOES NOT EXIST!">
+				<Body Text="НЕСУЩЕСТВУЮЩАЯ ТРАНЗАКЦИЯ!">
+				</Body>
+			</Msg>
+			<Msg ID="BATCH EMPTY">
+				<Body Text="КОШЕЛЁК ПУСТ!">
+				</Body>
+			</Msg>
+			<Msg ID="VOID COMPLETED">
+				<Body Text="ПУСТАЯ ЗАВЕРШЕНА">
+				</Body>
+			</Msg>
+			<Msg ID="SYSTEM VERSION">
+				<Body Text="ВЕРСИЯ СИСТЕМЫ">
+				</Body>
+			</Msg>
+			<Msg ID="Some hosts failed to settle">
+				<Body Text="Для некоторых хостов сеттлемент не прошёл">
+				</Body>
+			</Msg>
+            <Msg ID="Enter PIN:">
+                <Body Text="Введите ПИН:">
+                </Body>
+            <Msg ID="Inv. Number Missing">
+				<Body Text="Неправильный инвойс">
+				</Body>
+			</Msg>
+            </Msg>
+            <Msg ID="Processing Trans.">
+                <Body Text="Обработка транзакции">
+                </Body>
+            </Msg>
+            <Msg ID="Exit application ?">
+                <Body Text="Выйти из приложения?">
+                </Body>
+            </Msg>
+		</Lang>
+	</Prompts>
+</Application>

@@ -1,0 +1,79 @@
+reset();
+
+include("termconf_bits.script");
+include("status_flags.script");
+include("rp_head_mrch.pcl");
+
+$curSymbol = map_value("TransactionData", "TERMINAL_CURRENCY_SYMBOL"); 
+
+left();
+
+// date/time
+printf("DATE: ", map_value("TransactionData", "TR DATETIME", "%b %d, %y") );
+if ($termConfigOpts & TC1_PR_TIME)	
+{
+	right();
+	printf("TIME: ", map_value("TransactionData","TR DATETIME","%H:%M"));
+}
+line();
+left();
+
+// batch number
+printf("BATCH: ", map_value("TransactionData","TR BATCH NO" ), "\n\n");
+
+$totals_map = "TOTALS_MAP";
+$issuers_map = "ISSUERS_MAP";
+$cont = true;
+if (!map_is_empty($issuers_map))
+{
+	center();
+	bold();
+	printf( "TOTALS\n" );
+	no_bold();
+	left();
+	printf( "SALES" );
+	center();
+	printf( map_value($totals_map, "TOTALS#SALES") );
+	right();
+	printf( $curSymbol, " ", map_value($totals_map, "TOTALS$SALES") );
+	line();
+	left();
+	printf( "REFUNDS" );
+	center();
+	printf( map_value($totals_map, "TOTALS#REFUNDS") );
+	right();
+	printf( $curSymbol, " -", map_value($totals_map, "TOTALS$REFUNDS") );
+	line();
+	line();
+
+	map_rewind($issuers_map);
+
+	while ( $cont )
+	{
+		$index = map_index($issuers_map);
+		if ( $index != "TOTALS" )
+		{
+			center();
+			bold();
+			printf( $index, "\n" );
+			no_bold();
+			left();
+			printf( "SALES" );
+			center();
+			printf( map_value($totals_map, $index."#SALES") );
+			right();
+			printf( $curSymbol, " ", map_value($totals_map, $index."$SALES") );
+			line();
+			left();
+			printf( "REFUNDS" );
+			center();
+			printf( map_value($totals_map, $index."#REFUNDS") );
+			right();
+			printf( $curSymbol, " -", map_value($totals_map, $index."$REFUNDS") );
+			line();
+			line();
+		}
+
+		$cont = next_map_record($issuers_map);
+	}
+}

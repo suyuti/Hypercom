@@ -1,0 +1,14 @@
+// ********************** COMMON RECEIPT HEADER	**
+// ********************** LINE 1 **
+	center();
+	printf(map_value("TransactionData","TERMINAL_DEF_MERCH_NAME"));
+	line();
+// ********************** LINE 2 **
+	center();
+	printf(map_value("TransactionData","TERMINAL_RECEIPT_2"));
+	line();
+// ********************** LINE 3 **
+	center();
+	printf(map_value("TransactionData","TERMINAL_RECEIPT_3"));
+	line();
+	line();

@@ -1,0 +1,9 @@
+	// ********************** MERCHANT RECEIPT SPECIFIC HEADER **	
+	include("rp_head_common.pcl");
+// ********************** LINE 4 **
+	left();
+	printf("TERMINAL ID. :");
+	right();
+	printf(map_value("TransactionData","TR TERMINAL ID"));
+	line();
+	line();

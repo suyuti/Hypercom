@@ -1,0 +1,41 @@
+[Global]
+CurrentProject=Hyperware.vpj
+[ProjectDates]
+Hyperware.vpj=20070827163810985
+[TreeExpansion2]
+- Hyperware.vpj
+  - Source Files
+  - Resources
+    - Scripts
+  - Steps
+  + Transactions
+scroll:61
+[State]
+SCREEN: 1280 800 66 87 960 577 0 0 M 0 0 0 0 988 609
+CWD: ..\Hyperware
+BUFFER: BN="Src\DDLMain.cpp"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=544 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0 E=0 ESBU2=-1
+VIEW: LN=.3374 CL=17 LE=0 CX=16 CY=14 WI=5 BI=29 HT=0 HN=0 HF=0 HC=4
+BUFFER: BN="Src\StepAnketSec.cpp"
+BI: MA=1 74 1  TABS=1 5  WWS=1 IWT=0 ST=0 IN=2 BW=0 US=32000 RO=0 SE=1 SN=0 BIN=0 MN=C	HM=0 MF=608 TL=0 MLL=0 ASE=0 LNL=6 LCF=0 CAPS=0 E=0 ESBU2=1
+VIEW: LN=.0 CL=1 LE=0 CX=0 CY=0 WI=5 BI=28 HT=0 HN=0 HF=0 HC=4
+WINDOW: 132 174 834 406 -1 -1 N  WF=0 WT=2 "Default Fixed Font,10,0,1"
+BUFFER: BN="Src\DDLMain.cpp"
+VIEW: LN=.3374 CL=17 LE=0 CX=16 CY=14 WI=138 BI=29 HT=0 HN=0 HF=0 HC=4
+WINDOW: 154 203 834 406 -1 -1 M  WF=0 WT=1 "Default Fixed Font,10,0,1"
+BUFFER: BN="Src\StepAnketSec.cpp"
+VIEW: LN=.550 CL=1 LE=0 CX=0 CY=5 WI=224 BI=28 HT=0 HN=0 HF=0 HC=4
+FILEHIST: 9
+Src\StepFactory.hpp
+Src\StepAnketBaslat.hpp
+Src\StepAnketSec.hpp
+Src\StepAnketBaslat.cpp
+Src\TransAnketYap.cpp
+Src\StepFactory.cpp
+Resources\Scripts\mainmenu.mnu
+Src\DDLMain.cpp
+Src\StepAnketSec.cpp
+DEBUG: 0 0 0 0 3 0
+printf
+strcpy
+std::*

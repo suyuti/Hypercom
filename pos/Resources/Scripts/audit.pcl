@@ -1,0 +1,133 @@
+// reset everything
+	
+	reset();
+
+	repeat_count(1);
+	graphics("hypercom.bmp");
+
+	include("status_flags.script");
+	
+	// get the terminal's currency symbol
+
+	$curSymbol = map_value("TransactionData","TERM CURNCY SYMB"); 
+
+//  ****************** LINE 1-4 ******************
+// Print Receipt Header
+	
+	// Print the first 4 lines with the merchant name and the terminal id
+	// from an include header file
+	
+	include("rp_head_common.pcl");
+
+
+//  ****************** LINE 5 ********************
+
+	// align everything back to the left 
+
+	left();
+	bold();
+	printf("AUDIT");
+
+	right();
+	printf(map_value("TransactionData", "TR DATETIME", "%b %d, %y"), "\n");
+
+	left();
+	$acc_name = map_value("TransactionData", "TR JOURNAL NAME");
+	printf($acc_name, "\n\n");
+	no_bold();
+	
+//  ****************** HEADER *********************
+
+
+//  ****************** DATA *********************
+
+	define(jrn, map_value("TransactionData", "TR JOURNAL NAME"));
+
+	db_path("D:");
+	open_journal("", jrn);
+
+	while (!journal_eof(jrn))
+	{
+	    if ( $acc_name == "ALL HOSTS" || 
+		$acc_name == get_journal_field(jrn, "TR ACCEPTOR NAME")	)
+	    {
+		left();
+		printf("Invoice #:");
+		right();
+ 	 	printf(get_journal_field(jrn, "TR INVOICE"), "\n");
+		left();
+		printf("Trans status:");
+		$flags = get_journal_field(jrn, "TR STATUS");
+		right();
+		if ( field_mid($flags, HOST_SETTLED, 1 ) ) 
+		{
+			printf("SETTLED");
+		}
+		else
+		if ( field_mid($flags, REVERSAL, 1 ) ) 
+		{
+			printf("REVERSED");
+		}
+		else
+		if ( field_mid($flags, VOIDED, 1 ) ) 
+		{
+			printf("VOIDED");
+		}
+		else
+		if ( field_mid($flags, ADJUSTED, 1 ) )
+		{
+			printf("ADJUSTED");
+		}
+		else
+		{
+			printf("NORMAL");
+		}
+		line();
+		left();
+		printf("Trans type:");
+		right();
+		$type = get_journal_field(jrn, "TR NAME");
+		printf($type, "\n"); 
+		left();
+		printf("Card number:");
+		right();
+		printf(get_journal_field(jrn, "TR PAN"), "\n");
+		left();
+		printf("Issuer:");
+		right();
+		printf(get_journal_field(jrn, "TR ISSUER NAME"), "\n");
+		left();
+		printf("Amount:");
+		right();
+                if ($type == "REFUND")
+		{
+			printf("-");
+		}
+		printf($curSymbol, get_journal_field(jrn, "TR TOTAL AMT"), "\n");
+ 
+		line();
+	    }
+
+	    next_journal_record(jrn);
+
+	}
+	close_journal(jrn);
+
+//  ****************** TOTAL ********************
+
+	line();
+	left();
+	printf("TRANS TOTAL:");
+	right();
+	printf($curSymbol, map_value("TransactionData", "TOTAL"), "\n");
+	
+
+///**************** RECEIPT FOOTER TEXT LINES *********************
+
+	cut();
+
+	line();
+	line();
+	
+
+

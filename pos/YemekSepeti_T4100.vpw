@@ -1,0 +1,35 @@
+<!DOCTYPE Workspace SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpw.dtd">
+<Workspace Version="10.0" VendorName="SlickEdit">
+	<Environment>
+		<Set Name="APP_SRC" Value="%rpSrc"/>
+		<Set Name="HFC_ROOT" Value="%(HYP_TOOLKIT)\HFC\HFC_1.5.1\T4100"/>
+		<Set Name="APPMGR_ROOT" Value="%(HYP_TOOLKIT)\AppManager\T4100\20070306"/>
+		<Set Name="AAE_ROOT" Value="%(HYP_TOOLKIT)\AAE\T4100\20070702"/>
+		<Set Name="GNU_TOOLS" Value="%(HYP_TOOLKIT)\..\GNUTools\gnu-4.0.1-xscale"/>
+		<Set Name="GNU_TOOLS_BIN" Value="%(GNU_TOOLS)\bin"/>
+		<Set Name="CC" Value='"%(GNU_TOOLS_BIN)\xscale-elf-gcc"'/>
+		<Set Name="AR" Value='"%(GNU_TOOLS_BIN)\xscale-elf-ar" -rso'/>
+		<Set Name="LINK" Value='"%(GNU_TOOLS_BIN)\xscale-elf-ld"'/>
+		<Set Name="CCFLAGS_RELEASE" Value="-mcpu=xscale -mapcs-frame -mthumb-interwork -fno-exceptions -Os"/>
+		<Set Name="CCFLAGS_DEBUG" Value="-mcpu=xscale -mapcs-frame -mthumb-interwork"/>
+		<Set Name="OS_LIBS" Value='"%(APPMGR_ROOT)\Lib\API_Interface.a" "%(APPMGR_ROOT)\Lib\API_AppMgrInterface.a" "%(APPMGR_ROOT)\Lib\Retarget_Newlib.a"'/>
+		<Set Name="AAE_LIBS" Value='"%(AAE_ROOT)\Lib\ClientLib.lib" "%(AAE_ROOT)\Lib\Transporlib.lib" "%(AAE_ROOT)\Lib\RPCLib.lib"'/>
+		<Set Name="LIBC_DIRS" Value='-L "%(GNU_TOOLS)\xscale-elf\lib\interwork" -L "%(GNU_TOOLS)\lib\gcc\xscale-elf\4.0.1\interwork"'/>
+		<Set Name="PLATFORM_SPECIFIC_DEFINES" Value='"-DMAKE_EMV"'/>
+		<Set Name="GAL" Value="GrafixWT-2.5"/>
+		<Set Name="DAL" Value="T4100"/>
+		<Set Name="PLATFORM" Value="T4100"/>
+		<Set Name="BINFORMAT" Value="srec" />
+		<Set Name="PACKINGLISTBUILDER" Value="%(HYP_TOOLKIT)\..\PackingListBuilder\PackingListBuilder" />
+		<Set Name="HEAPSIZE_RELEASE" Value="524288" />
+		<Set Name="HEAPSIZE_DEBUG" Value="524288" />
+		<Set Name="DYNAMIC_MEMORY_SIZE" Value="(300 * 1024)" />
+		<Set Name="APPLICATION_STACK_SIZE" Value="(64 * 1024)" />
+	</Environment>
+	<Projects>
+		<Project File="Hyperware.vpj"/>
+	</Projects>
+	<CompatibleVersions>
+		<PrevVersion VersionNumber="9.1"/>
+	</CompatibleVersions>
+</Workspace>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Host">
+</Property><Property Name="Solution File" Value="G:\calisma\yemeksepeti\host\Host\Host.sln">
+</Property><Property Name="Date" Value="24 Eylül 2007 Pazartesi">
+</Property><Property Name="Time" Value="14:03:27">
+</Property></Properties><Event ErrorLevel="0" Project="YemekSepeti.csproj" Source="YemekSepeti.csproj" Description="Converted.&#xA;There may be some unresolved conversion issues you will need to manually fix. For more information, please refer to http://go.microsoft.com/fwlink/?LinkId=46995 or search for the help topic &quot;Converting from Visual Studio .NET 2002 or 2003&quot;.">
+</Event><Event ErrorLevel="3" Project="YemekSepeti.csproj" Source="YemekSepeti.csproj" Description="Converted">
+</Event></UpgradeLog>

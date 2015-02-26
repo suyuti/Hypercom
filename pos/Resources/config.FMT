@@ -1,0 +1,1776 @@
+ #=============================================================================
+ # Company:
+ #      Hypercom Inc
+ #
+ # Product:
+ #      Hyperware Base Application
+ #      (c) Copyright 2004
+ #
+ # File Name:
+ #      c11ndesc.fmt
+ #
+ # File Description:
+ #      Definition of parameters/options for HPOSFC based application
+ #      
+ #      GRAMMAR:  #.....\n   - comments
+ #               ( tables (tab_name id) (...) (...) )
+ #               ( parameters 
+ #                  (table name type type length) 
+ #                  ( union
+ #                      (table name type type length)
+ #                      (table name type type length)
+ #                      (table name type type length)
+ #                  ) 
+ #                  (table name type type length) 
+ #                  (...) 
+ #               )
+ #               ( options (id parameter mask) (...) (...) )
+ #               ...
+ #               ( parameters (...) (...) (...) )
+ #               ( options (...) (...) (...) )  #each option should have 
+ #                                              #parameter defined before
+ #                                              #which contains the option
+ #               ...
+ #
+ #               UNION here has the same meaning as in C/C++
+ #
+ #=============================================================================
+ #====================================================================
+ #
+ # Tables definitions
+ #
+ #====================================================================
+( tables 
+    ( TERMINAL           1 )
+    ( CARD               2 )
+    ( ISSUER             3 )
+    ( ACQUIRER           4 )
+    ( VISAII             6 )
+    ( SYSTEM_PARAMETERS 10 )
+    ( EMV_TERMINAL 	81 )
+    ( ICC 		82 )	
+    ( TAIDTAB 		83 )
+    ( KEYDATA 		84 )
+    ( REVKEY 		85 )
+    ( ADDTAGS           86 )
+    ( CA_KEYS 		87 )
+    ( KEYEXPIRE 	88 )
+    ( SECPROV           89 )   
+)
+		
+ #====================================================================
+ #
+ # Parameters definitions
+ #        
+ #     Each parameter:
+ #     (
+ #         <TABLE>    - name of the table
+ #         <NAME>     - name of the parameter
+ #         <DB_TYPE>  - type stored in the DB
+ #         <APP_TYPE> - type returned to the application
+ #         <LENGTH>   - length of the DB field in bytes
+ #     )
+ #
+ #====================================================================
+( parameters  
+ #====================================================================
+ #      TERMINAL
+ #====================================================================
+	( 
+		TERMINAL   # TERMINAL_TABLE_ID
+		RESERVED 
+		CFG_BCD_BYTE 
+        	CFG_APP_STRING
+		1 
+	) 
+	( 
+		TERMINAL   # TERMINAL_TABLE_LENGTH
+		RESERVED
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		2 
+	)
+	( 
+		TERMINAL   # TERMINAL_PRINTER_BAUD_RATE   
+		TERMINAL_PRINTER_BAUD_RATE 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		TERMINAL   # TERMINAL_PASSWD
+		TERMINAL_PASSWD 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		2 
+	)
+	( 
+		TERMINAL   # TERMINAL_OPT1
+		TERMINAL_OPT1 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING 
+		1 
+	)
+	( 
+		TERMINAL   # TERMINAL_RECEIPT_2
+		TERMINAL_RECEIPT_2 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		23 
+	)
+	( 
+		TERMINAL   # TERMINAL_RECEIPT_3
+		TERMINAL_RECEIPT_3 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		23 
+	)
+	( 
+		TERMINAL   # TERMINAL_DEF_MERCH_NAME
+		TERMINAL_DEF_MERCH_NAME 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		23 
+	)
+	( 
+		TERMINAL   # TERMINAL_CURRENCY_SYMBOL
+		TERMINAL_CURRENCY_SYMBOL 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		TERMINAL   # TERMINAL_LOCAL_OPT
+		TERMINAL_LOCAL_OPT 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		TERMINAL   # TERMINAL_PIN_PAD_TYPE
+		TERMINAL_PIN_PAD_TYPE 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		TERMINAL   # TERMINAL_MAINTENANCE_PASSWD
+		TERMINAL_MAINTENANCE_PASSWD 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		3 
+	)
+	( 
+		TERMINAL   # TERMINAL_OPT5
+		TERMINAL_OPT5 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		TERMINAL   # TERMINAL_OPT6
+		TERMINAL_OPT6
+		CFG_BITSET_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		TERMINAL   # PAUSE_PRINTING_2_REC
+		PAUSE_PRINTING_2_REC
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+ #====================================================================
+ #      CARD
+ #====================================================================
+	( 
+		CARD   # CARD_TABLE_ID
+		RESERVED 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	) 
+	( 
+		CARD   # CARD_TABLE_LENGTH
+		RESERVED 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		2 
+	)
+	( 
+		CARD   # CARD_RANGE_NUM
+		RESERVED 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		CARD   # CARD_PAN_LOW
+		CARD_PAN_LOW 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		5 
+	)
+	( 
+		CARD   # CARD_PAN_HIGH
+		CARD_PAN_HIGH
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		5 
+	)
+	( 
+		CARD   # CARD_ISSUER_TABLE_ID
+		CARD_ISSUER_TABLE_ID 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		CARD   # CARD_ACQUIRER_TABLE_ID
+		CARD_ACQUIRER_TABLE_ID 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+ #====================================================================
+ #      ISSUER
+ #====================================================================
+	( 
+		ISSUER   # ISSUER_TABLE_ID
+		RESERVED 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+ 		1 
+	) 
+	( 
+		ISSUER   # ISSUER_TABLE_LENGTH
+		RESERVED
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		2 
+	)
+	( 
+		ISSUER   # ISSUER_NUMBER
+		RESERVED
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ISSUER   # ISSUER_ID
+		ISSUER_ID 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1
+	)
+	( 
+		ISSUER   # ISSUER_NAME
+		ISSUER_NAME 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		10 
+	)
+	( 
+		ISSUER   # ISSUER_OPT1
+		ISSUER_OPT1
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ISSUER   # ISSUER_OPT2
+		ISSUER_OPT2 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ISSUER   # ISSUER_OPT3
+		ISSUER_OPT3 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ISSUER   # ISSUER_OPT4
+		ISSUER_OPT4 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ISSUER   # ISSUER_DEF_ACCT
+		ISSUER_DEF_ACCT 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ISSUER   # ISSUER_FLOOR_LIMIT
+		ISSUER_FLOOR_LIMIT 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		2 
+	)
+	( 
+		ISSUER   # ISSUER_OPT6
+		ISSUER_OPT6 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+ #====================================================================
+ #      ACQUIRER
+ #====================================================================
+	( 
+		ACQUIRER   # ACQUIRER_TABLE_ID
+		RESERVED
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	) 
+	( 
+		ACQUIRER   # ACQUIRER_TABLE_LENGTH
+		RESERVED 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		2 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_NUMBER
+		RESERVED
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_ID
+		ACQUIRER_ID 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_PROGRAM_NAME
+		ACQUIRER_PROGRAM_NAME
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		10 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_NAME
+		"_ACQUIRER ## NAME_" 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		10 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_PRIM_TRANS_TEL_NUM
+		ACQUIRER_PRIM_TRANS_TEL_NUM
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		12 
+	)										
+	( 
+		ACQUIRER   # ACQUIRER_PRIM_TRANS_CONN_TIME
+		ACQUIRER_PRIM_TRANS_CONN_TIME 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_PRIM_TRANS_DIAL_ATTEMPTS
+		ACQUIRER_PRIM_TRANS_DIAL_ATTEMPTS 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_SEC_TRANS_TEL_NUM
+		ACQUIRER_SEC_TRANS_TEL_NUM 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		12 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_SEC_TRANS_CONN_TIME
+		ACQUIRER_SEC_TRANS_CONN_TIME 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_SEC_TRANS_DIAL_ATTEMPTS
+		ACQUIRER_SEC_TRANS_DIAL_ATTEMPTS 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_PRIM_SETTL_TEL_NUM
+		ACQUIRER_PRIM_SETTL_TEL_NUM 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		12 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_PRIM_SETTL_CONN_TIME
+		ACQUIRER_PRIM_SETTL_CONN_TIME 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_PRIM_SETTL_DIAL_ATTEMPTS
+		ACQUIRER_PRIM_SETTL_DIAL_ATTEMPTS
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_SEC_SETTL_TEL_NUM
+		ACQUIRER_SEC_SETTL_TEL_NUM 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		12 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_SEC_SETTL_CONN_TIME
+		ACQUIRER_SEC_SETTL_CONN_TIME
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_SEC_SETTL_DIAL_ATTEMPTS
+		ACQUIRER_SEC_SETTL_DIAL_ATTEMPTS
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_MODEM_MODE
+		ACQUIRER_MODEM_MODE 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	(
+		ACQUIRER   # ACQUIRER_IP_URL
+		ACQUIRER_IP_URL
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		47
+	)
+	(
+		ACQUIRER   # ACQUIRER_IP_PORT
+		ACQUIRER_IP_PORT
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		5
+	)
+	( 
+		ACQUIRER   # ACQUIRER_OPT1
+		ACQUIRER_OPT1 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_OPT2
+		ACQUIRER_OPT2 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_OPT4
+		ACQUIRER_OPT4 
+		CFG_BITSET_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_NII
+		ACQUIRER_NII 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		2 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_TERM_ID
+		ACQUIRER_TERM_ID 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		8 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_ID_CODE
+		ACQUIRER_ID_CODE
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		15 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_CURR_BATCH_NUM
+		ACQUIRER_CURR_BATCH_NUM 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		3 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_NEXT_BATCH_NUM
+		ACQUIRER_NEXT_BATCH_NUM
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		3 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_PIN_KEY
+		ACQUIRER_PIN_KEY 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		8 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_MASTER_KEY_IDX_PIN
+		ACQUIRER_MASTER_KEY_IDX_PIN		
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_MODEM_MODE_SETTL 
+		ACQUIRER_MODEM_MODE_SETTL
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		ACQUIRER   # ACQUIRER_SETTL_PROTOCOL 
+		ACQUIRER_SETTL_PROTOCOL
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		10 
+	)
+	(
+		ACQUIRER   # ACQUIRER_IP_SETTL_URL
+		ACQUIRER_IP_SETTL_URL
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		47
+	)
+	(
+		ACQUIRER   # ACQUIRER_IP_SETTL_PORT
+		ACQUIRER_IP_SETTL_PORT
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		5
+	)
+	(
+		ACQUIRER   # ACQUIRER_IP_SETTL_PROTOCOL
+		ACQUIRER_IP_SETTL_PROTOCOL
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		1
+	)
+	(
+		ACQUIRER   # ACQUIRER_HLAN_ADDRESS
+		ACQUIRER_HLAN_ADDRESS
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		3
+	)
+ #====================================================================
+ #      VISAII
+ #====================================================================
+	( 
+		VISAII   # VISAII_TABLE_ID
+		RESERVED 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	) 
+	( 
+		VISAII   # VISAII_TABLE_LENGTH
+		RESERVED 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		2 
+	)
+	( 
+		VISAII   # VISAII_TABLE_ENTRY_NUM
+		RESERVED 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		VISAII   # VISAII_ACQUIRER_ID
+		VISAII_ACQUIRER_ID 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		VISAII   
+		VISAII_MERCH_NUMBER 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		12
+	)
+	( 
+		VISAII   
+		VISAII_STORE_NUM
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		4
+	)
+	( 
+		VISAII   
+		VISAII_TERM_NUM
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		4
+	)
+	( 
+		VISAII   # VISAII_MERCH_NAME
+		VISAII_MERCH_NAME 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		25
+	)
+	( 
+		VISAII   # VISAII_MERCH_CITY_STATE
+		VISAII_MERCH_CITY_STATE 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		15 
+	)
+	( 
+		VISAII   # VISAII_ACQUIRER_BIN
+		VISAII_ACQUIRER_BIN
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		6 
+	)
+	( 
+		VISAII   # VISAII_MERCH_CAT 
+		VISAII_MERCH_CAT 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		4 
+	)
+	( 
+		VISAII   # VISAII_MERCH_LOCATION
+		VISAII_MERCH_LOCATION
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		4 
+	)
+	( 
+		VISAII   # VISAII_TERMINAL_SERIAL_NUM
+		VISAII_TERMINAL_SERIAL_NUM		 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		8 
+	)
+	( 
+		VISAII   # VISAII_MERCH_CITY
+		VISAII_MERCH_CITY 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		5 
+	)
+	( 
+		VISAII   # VISAII_MERCH_COUNTRY
+		VISAII_MERCH_COUNTRY
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		3 
+	)
+	( 
+		VISAII   # VISAII_MERCH_CURRENCY
+		VISAII_MERCH_CURRENCY 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		3 
+	)
+	( 
+		VISAII   # VISAII_TIME_ZONE_DIFF
+		VISAII_TIME_ZONE_DIFF
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		3 
+	)
+	( 
+		VISAII   # VISAII_FIRST_CHAR_LOCATION
+		VISAII_FIRST_CHAR_LOCATION 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		1 
+	)
+	( 
+		VISAII   # VISAII_EXT_ZIP
+		RESERVED 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		4 
+	)
+ #====================================================================
+ #      SYS_PARAMS ( CAN BE ADDED BY APPLICATION )
+ #====================================================================
+	( 
+		SYSTEM_PARAMETERS	    # SYS_TRACE_NUMBER
+		SYS_TRACE_NUMBER
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		3			   # 16-bit number
+	)
+	( 
+		SYSTEM_PARAMETERS	    # SYS_INVOICE_NUMBER
+		SYS_INVOICE_NUMBER
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		3 
+	)
+ #====================================================================
+ #      ICC
+ #====================================================================
+	(			# ICC table id
+		 ICC
+		 TABLE_ID
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# ICC table length
+		 ICC
+		 TABLE_LENGTH
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 2
+	 )
+	(			# tblnmbr
+		 ICC
+		 TBLNMBR
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# icciss
+		 ICC
+		 ICCISS
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# icctargpct
+		 ICC
+		 ICCTARGPCT
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# iccmaxpct
+		 ICC
+		 ICCMAXPCT
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# iccthresh
+		 ICC
+		 ICCTHRESH
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# icctacden
+		 ICC
+		 ICCTACDEN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# icctaconl
+		 ICC
+		 ICCTACONL
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# icctacdef
+		 ICC
+		 ICCTACDEF
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+ #====================================================================
+ #      TAIDTAB
+ #====================================================================
+	(			# TAIDTAB table id
+		 TAIDTAB
+		 TABLE_ID
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# TAIDTAB table length
+		 TAIDTAB
+		 TABLE_LENGTH
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 2
+	 )
+	(			# tableid
+		 TAIDTAB
+		 TABLEID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# adtid
+		 TAIDTAB
+		 ADTID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# aid_len
+		 TAIDTAB
+		 AID_LEN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# iccaid
+		 TAIDTAB
+		 ICCAID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 16
+	 )
+	(			# opt1_0
+		 TAIDTAB
+		 "TAIDTAB OPT 1"
+		 CFG_BITSET_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# floor
+		 TAIDTAB
+		 FLOOR
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# taidver1
+		 TAIDTAB
+		 TAIDVER1
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# taidver2
+		 TAIDTAB
+		 TAIDVER2
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# taidver3
+		 TAIDTAB
+		 TAIDVER3
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# taidTDOL
+		 TAIDTAB
+		 TAIDTDOL
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 20
+	 )
+	(			# taidDDOL
+		 TAIDTAB
+		 TAIDDDOL
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 20
+	 )
+	(			# RC_Offl_ap
+		 TAIDTAB
+		 RC_OFFL_AP
+		 CFG_ALPHA_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# RC_Offl_dc
+		 TAIDTAB
+		 RC_OFFL_DC
+		 CFG_ALPHA_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# RC_unab_ap
+		 TAIDTAB
+		 RC_UNAB_AP
+		 CFG_ALPHA_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# RC_unab_dc
+		 TAIDTAB
+		 RC_UNAB_DC
+		 CFG_ALPHA_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+ #====================================================================
+ #      KEYDATA
+ #====================================================================
+	(			# KEYDATA table id
+		 KEYDATA
+		 TABLE_ID
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# KEYDATA table length
+		 KEYDATA
+		 TABLE_LENGTH
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 2
+	 )
+	(			# keynmbr
+		 KEYDATA
+		 KEYNMBR
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# capkidx
+		 KEYDATA
+		 CAPKIDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# capklen
+		 KEYDATA
+		 CAPKLEN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# capk1
+		 KEYDATA
+		 CAPK1
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# capk2
+		 KEYDATA
+		 CAPK2
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# capk3
+		 KEYDATA
+		 CAPK3
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# capk4
+		 KEYDATA
+		 CAPK4
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# capk5
+		 KEYDATA
+		 CAPK5
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# capk6
+		 KEYDATA
+		 CAPK6
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# capk7
+		 KEYDATA
+		 CAPK7
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# capk8
+		 KEYDATA
+		 CAPK8
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 24
+	 )
+	(			# capkRID
+		 KEYDATA
+		 CAPKRID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# capkexp
+		 KEYDATA
+		 CAPKEXP
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# capkhash
+		 KEYDATA
+		 CAPKHASH
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 20
+	 )
+ #====================================================================
+ #      REVKEY
+ #====================================================================
+	(			# REVKEY table id
+		 REVKEY
+		 TABLE_ID
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# REVKEY table length
+		 REVKEY
+		 TABLE_LENGTH
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 2
+	 )
+	(			# cert1_RID
+		 REVKEY
+		 CERT1_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert1_IDX
+		 REVKEY
+		 CERT1_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert1_SerN
+		 REVKEY
+		 CERT1_SERN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# cert2_RID
+		 REVKEY
+		 CERT2_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert2_IDX
+		 REVKEY
+		 CERT2_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert2_SerN
+		 REVKEY
+		 CERT2_SERN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# cert3_RID
+		 REVKEY
+		 CERT3_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert3_IDX
+		 REVKEY
+		 CERT3_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert3_SerN
+		 REVKEY
+		 CERT3_SERN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# cert4_RID
+		 REVKEY
+		 CERT4_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert4_IDX
+		 REVKEY
+		 CERT4_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert4_SerN
+		 REVKEY
+		 CERT4_SERN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# cert5_RID
+		 REVKEY
+		 CERT5_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert5_IDX
+		 REVKEY
+		 CERT5_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert5_SerN
+		 REVKEY
+		 CERT5_SERN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# cert6_RID
+		 REVKEY
+		 CERT6_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert6_IDX
+		 REVKEY
+		 CERT6_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert6_SerN
+		 REVKEY
+		 CERT6_SERN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# cert7_RID
+		 REVKEY
+		 CERT7_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert7_IDX
+		 REVKEY
+		 CERT7_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert7_SerN
+		 REVKEY
+		 CERT7_SERN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# cert8_RID
+		 REVKEY
+		 CERT8_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert8_IDX
+		 REVKEY
+		 CERT8_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert8_SerN
+		 REVKEY
+		 CERT8_SERN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# cert9_RID
+		 REVKEY
+		 CERT9_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert9_IDX
+		 REVKEY
+		 CERT9_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert9_SerN
+		 REVKEY
+		 CERT9_SERN
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# cert10_RID
+		 REVKEY
+		 CERT10_RID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# cert10_IDX
+		 REVKEY
+		 CERT10_IDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# cert10_Ser
+		 REVKEY
+		 CERT10_SER
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+ #====================================================================
+ #      CA_KEYS
+ #====================================================================
+	(			# CA_KEYS table id
+		 CA_KEYS
+		 TABLE_ID
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# CA_KEYS table length
+		 CA_KEYS
+		 TABLE_LENGTH
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 2
+	 )
+	(			# tblnmbr
+		 CA_KEYS
+		 TBLNMBR
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# capkterm
+		 CA_KEYS
+		 CAPKTERM
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+ #====================================================================
+ #      ADDTAGS
+ #====================================================================
+	(			# ADDTAGS table id
+		 ADDTAGS
+		 TABLE_ID
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# ADDTAGS table length
+		 ADDTAGS
+		 TABLE_LENGTH
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 2
+	 )
+	(			# tblnmbr
+		 ADDTAGS
+		 TBLNMBR
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# adtid
+		 ADDTAGS
+		 ADTID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# adt1
+		 ADDTAGS
+		 ADT1
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# adt2
+		 ADDTAGS
+		 ADT2
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# adt3
+		 ADDTAGS
+		 ADT3
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+	(			# adt4
+		 ADDTAGS
+		 ADT4
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 32
+	 )
+ #====================================================================
+ #      KEYEXPIRE
+ #====================================================================
+	(			# KEYEXPIRE table id
+		 KEYEXPIRE
+		 TABLE_ID
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# KEYEXPIRE table length
+		 KEYEXPIRE
+		 TABLE_LENGTH
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 2
+	 )
+	(			# ExpNum
+		 KEYEXPIRE
+		 EXPNUM
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# KeyRID
+		 KEYEXPIRE
+		 KEYRID
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# KeyIdx
+		 KEYEXPIRE
+		 KEYIDX
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 1
+	 )
+	(			# ExpiryDate
+		 KEYEXPIRE
+		 EXPIRYDATE
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+ #====================================================================
+ #      EMV_TERMINAL
+ #====================================================================
+	(			# EMV_TERMINAL table id
+		 EMV_TERMINAL
+		 TABLE_ID
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# EMV_TERMINAL table length
+		 EMV_TERMINAL
+		 TABLE_LENGTH
+		 CFG_BCD_BYTE
+		 CFG_APP_INT32
+		 2
+	 )
+	(			# tceopt1_0
+		 EMV_TERMINAL
+		 "EMV_TERMINAL OPT 1"
+		 CFG_BITSET_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# tceopt2_0
+		 EMV_TERMINAL
+		 "EMV_TERMINAL OPT 2"
+		 CFG_BITSET_BYTE
+		 CFG_APP_INT32
+		 1
+	 )
+	(			# termtype
+		 EMV_TERMINAL
+		 TERMTYPE
+		 CFG_ALPHA_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# currcode
+		 EMV_TERMINAL
+		 CURRCODE
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# ctrycode
+		 EMV_TERMINAL
+		 CTRYCODE
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 2
+	 )
+	(			# tcap
+		 EMV_TERMINAL
+		 TCAP
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+	(			# addtcap
+		 EMV_TERMINAL
+		 ADDTCAP
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 5
+	 )
+	(			# appcap
+		 EMV_TERMINAL
+		 APPCAP
+		 CFG_BCD_BYTE
+		 CFG_APP_STRING
+		 3
+	 )
+ #====================================================================
+ #      SECPROV
+ #====================================================================
+ 	( 
+		SECPROV   # SECPROV_TABLE_ID
+		RESERVED
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		1 
+	) 
+	( 
+		SECPROV   # SECPROV_TABLE_LENGTH
+		RESERVED 
+		CFG_BCD_BYTE 
+		CFG_APP_STRING
+		2 
+	)
+        ( 
+		SECPROV   # SECURITY_PROVIDER
+		SECURITY_PROVIDER		 
+		CFG_ALPHA_BYTE
+		CFG_APP_STRING
+		32 
+	)
+)
+ #====================================================================
+ #
+ # Options definitions
+ #
+ #     Each option:
+ #     (
+ #         <NAME>
+ #         <PARAMETER>
+ #         <MASK>
+ #     )
+ #
+ #====================================================================
+( options
+ #====================================================================
+ #      TERMINAL
+ #====================================================================
+    (
+	TC1_REST       # Restaurant processing
+        TERMINAL_OPT1
+        00000100b
+    )
+    (
+	TC1_CASHIER    # Cashier entry on
+        TERMINAL_OPT1
+        00001000b
+    )
+    (
+        TC1_RECON      # 0-enter 1-confirm
+        TERMINAL_OPT1
+        10000000b
+    )
+    (
+	TC5_HSMENU     # Do host select using menu where applic
+        TERMINAL_OPT5  
+        00000001b
+    )
+    (
+	TC5_NOHSPRM    # No host select prompt during settlemnt
+        TERMINAL_OPT5  
+        00000010b
+    )
+    (
+	TC6_PINBYPASSPIN     # ALLOW PIN BYPASS (from pinpad)
+        TERMINAL_OPT6  
+        00000010b
+    )
+    (
+	TC6_ICCEARLYAMT    # EARLY AMOUNT ENTRY FOR ICC TXNS
+        TERMINAL_OPT6  
+        00010000b
+    )
+    (
+	TC6_NOSECOND   # Supress second receipt
+        TERMINAL_OPT6  
+        01000000b
+    )
+    (
+	TCL_USE_RFID    # USE INTERNAL RFID
+        TERMINAL_LOCAL_OPT 
+        0x20
+    )
+ #====================================================================
+ #      ACQUIRER
+ #====================================================================
+    (
+	ACQ_IGNORE_HOST_TIME # Ignore host time
+        ACQUIRER_OPT1  
+        00001000b
+    )
+    (
+	ACQ_USE_GPRS # Use GPRS connection
+        ACQUIRER_OPT1  
+        00010000b
+    )
+    (
+	ACQ_SEND_BAT_NO # Send batch no in 01x0 & 02x0 messages
+        ACQUIRER_OPT2  
+        00001000b
+    )
+    (
+	TCP_SMCARD   # SMART CARD ENABLED
+        ACQUIRER_OPT4  
+        00010000b
+    )
+ #====================================================================
+ #      ISSUER
+ #====================================================================
+    (
+	ISS_EXPIRATION_DATE_ALLOWED # Is expiry date entry required
+        ISSUER_OPT1  
+        00001000b
+    )
+    (
+	ISS_ROC_NUMBER_REQUIRED # Is roc number required (invoice number)
+        ISSUER_OPT2  
+        00000010b
+    )
+    (
+	ISS_CAPTURE_CARD_RANGE # Capture card range
+        ISSUER_OPT2
+        00001000b
+    )
+    (
+	ISS_GENERATE_6_DIGIT_AUTH # Generate 6 digit auth for floor limit
+        ISSUER_OPT3  
+        10000000b
+    )
+    (
+	ISS_DEBIT_ISSUER # This is a debit issuer
+        ISSUER_OPT4
+        00000001b
+    )
+    (
+	ISS_AUTH_OVER_LIMIT # Authorize if over floor limit
+        ISSUER_OPT4
+        00000100b
+    )
+    (
+	ISS_ADDRESS_VERIFICATION_ALLOWED # Allow address verification
+        ISSUER_OPT6  
+        00000001b
+    )
+    (
+	ISS_MAIL_ADDRESS_REQUIRED # Cardholder mail address required
+        ISSUER_OPT6  
+        00000010b
+    )
+    (
+	ISS_AVS_ZIPCODE_REQUIRED # Cardholder zipcode required
+        ISSUER_OPT6  
+        00000100b
+    )
+    (
+	ISS_LEVEL2_AMOUNT_ENABLED # Enable level ii cmrc./purch. card amount
+        ISSUER_OPT6  
+        00100000b
+    )
+    (
+	ISS_LEVEL2_PO_ENABLED # Enable level ii cmrc./purch. card p.o. number
+        ISSUER_OPT6  
+        01000000b
+    )
+ #====================================================================
+ #      TAIDTAB
+ #====================================================================
+    (			# opt1_0
+    	 OPT1_0
+    	 "TAIDTAB OPT 1"
+    	 0x1
+     )
+    (			# opt1_1
+    	 OPT1_1
+    	 "TAIDTAB OPT 1"
+    	 0x2
+     )
+    (			# opt1_2
+    	 OPT1_2
+    	 "TAIDTAB OPT 1"
+    	 0x4
+     )
+    (			# opt1_3
+    	 OPT1_3
+    	 "TAIDTAB OPT 1"
+    	 0x8
+     )
+    (			# opt1_4
+    	 OPT1_4
+    	 "TAIDTAB OPT 1"
+    	 0x10
+     )
+    (			# opt1_5
+    	 OPT1_5
+    	 "TAIDTAB OPT 1"
+    	 0x20
+     )
+    (			# opt1_6
+    	 OPT1_6
+    	 "TAIDTAB OPT 1"
+    	 0x40
+     )
+    (			# opt1_7
+    	 OPT1_7
+    	 "TAIDTAB OPT 1"
+    	 0x80
+     )
+ #====================================================================
+ #      EMV_TERMINAL
+ #====================================================================
+    (			# tceopt1_0
+    	 TCEOPT1_0
+    	 "EMV_TERMINAL OPT 1"
+    	 0x1
+     )
+    (			# tceopt1_1
+    	 TCEOPT1_1
+    	 "EMV_TERMINAL OPT 1"
+    	 0x2
+     )
+    (			# tceopt1_2
+    	 TCEOPT1_2
+    	 "EMV_TERMINAL OPT 1"
+    	 0x4
+     )
+    (			# tceopt1_3
+    	 TCEOPT1_3
+    	 "EMV_TERMINAL OPT 1"
+    	 0x8
+     )
+    (			# tceopt1_4
+    	 TCEOPT1_4
+    	 "EMV_TERMINAL OPT 1"
+    	 0x10
+     )
+    (			# tceopt1_5
+    	 TCEOPT1_5
+    	 "EMV_TERMINAL OPT 1"
+    	 0x20
+     )
+    (			# tceopt1_6
+    	 TCEOPT1_6
+    	 "EMV_TERMINAL OPT 1"
+    	 0x40
+     )
+    (			# tceopt1_7
+    	 TCEOPT1_7
+    	 "EMV_TERMINAL OPT 1"
+    	 0x80
+     )
+    (			# tceopt2_0
+    	 TCEOPT2_0
+    	 "EMV_TERMINAL OPT 2"
+    	 0x1
+     )
+    (			# tceopt2_1
+    	 TCEOPT2_1
+    	 "EMV_TERMINAL OPT 2"
+    	 0x2
+     )
+    (			# tceopt2_2
+    	 TCEOPT2_2
+    	 "EMV_TERMINAL OPT 2"
+    	 0x4
+     )
+    (			# tceopt2_3
+    	 TCEOPT2_3
+    	 "EMV_TERMINAL OPT 2"
+    	 0x8
+     )
+    (			# tceopt2_4
+    	 TCEOPT2_4
+    	 "EMV_TERMINAL OPT 2"
+    	 0x10
+     )
+    (			# tceopt2_5
+    	 TCEOPT2_5
+    	 "EMV_TERMINAL OPT 2"
+    	 0x20
+     )
+    (			# tceopt2_6
+    	 TCEOPT2_6
+    	 "EMV_TERMINAL OPT 2"
+    	 0x40
+     )
+    (			# tceopt2_7
+    	 TCEOPT2_7
+    	 "EMV_TERMINAL OPT 2"
+    	 0x80
+     )
+)

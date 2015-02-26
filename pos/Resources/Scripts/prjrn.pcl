@@ -1,0 +1,69 @@
+reset();
+
+left();
+
+printf("****** START ******\n");
+
+$jrn_host = map_value("TransactionData", "TR JOURNAL NAME");
+
+define(jrn, $jrn_host);
+
+db_path("D:");
+open_journal("", jrn);
+
+while (!journal_eof(jrn))
+{
+
+ left();
+ printf("Trans Name:");
+ right();
+ printf(get_journal_field(jrn, "TR NAME"));
+ printf("\n");
+
+ left();
+ printf("Trans Key:");
+ right();
+ printf(get_journal_field(jrn, "TR KEY"));
+ printf("\n");
+ 
+ left();
+ printf("PAN:");
+ right();
+ printf(get_journal_field(jrn, "TR PAN"));
+ printf("\n");
+
+ left();
+ printf("Issuer:");
+ right();
+ printf(get_journal_field(jrn, "TR ISSUER NAME"));
+ printf("\n");
+
+ left();
+ printf("Card Acceptor:");
+ right();
+ printf(get_journal_field(jrn, "TR ACCEPTOR NAME"));
+ printf("\n");
+ 
+ left();
+ printf("Total:");
+ right();
+ printf(get_journal_field(jrn, "TR TOTAL AMT"), "\n");
+
+ left();
+ printf("Invoice:");
+ right();
+ printf(get_journal_field(jrn, "TR INVOICE"), "\n");
+
+ left();
+ printf("Date:");
+ right();
+ printf(get_journal_field(jrn, "TR DATETIME"), "\n");
+ 
+ next_journal_record(jrn);
+
+ line();
+}
+close_journal(jrn);
+left();
+printf("******* END *******\n");
+printf("\n\n");

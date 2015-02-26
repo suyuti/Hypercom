@@ -1,0 +1,52 @@
+define(	TC1_DUALAMT,	1 );                // Amount dual entry
+define(	TC1_SHOWMSR,	2 );                // Display track 2
+define(	TC1_REST,		4 );                // Restaurant processing
+define(	TC1_CASHIER,	8 );                // Cashier entry on
+define(	TC1_LODGING,	16 );               // Lodging processing
+define(	TC1_PR_TIME,	32 );               // Print time on receipt
+define(	TC1_DDMM,		64 );               // Date format is ddmm
+define(	TC1_RECON,		128 );              // 0-enter, 1-confirm
+define(	TC2_TRACK1,     256 );              // Track to read 0-trk 1,1-trk 2
+define(	TC2_PRINT,      512 );              // Printer configured
+define(	TC2_PRTTOT,     1024 );             // 0-print "total" 1-dont print "total"
+define(	TC2_TILL,       2048 );             // Till processing  0-no 1-yes
+define(	TC2_REF_OFF,    4096 );             // Refunds offline? 0-no 1-yes
+define(	TC2_VOID_OFF,   8192 );             // Voids offline?   0-no 1-yes
+define(	TC2_ENA_PREP,   16384 );            // 0-normal 1-pre-print
+define(	TC2_CVDBKEY,    32768 );            // Upperleft key 0-card verify 1-debit
+define(	TC3_ECRINIT,    65536 );            // 1- ecr initiates transactions
+define(	TC3_ECR,        131072 );           // 1- ecr interface enabled
+define(	TC3_AMTPIN,     262144 );           // 1- amount verify at pinpad
+define(	TC3_PRTVER,     524288 );           // 1- print card verify
+define(	TC3_IMPRINT,    1048576 );          // 1- take imprint on manual entry
+define(	TC3_CHKREAD,    2097152 );          // 1- check reader installed
+define(	TC3_PINCARD,    4194304 );          // Card read from pinpad
+define(	TC3_TERMSTAT,   8388608 );          // 0- help desk (function 6) enabled
+									        // 1- termstat enabled
+define(	TC4_SRV_ADJ,	16777216 );         // Adjust by cashier only
+define(	TC4_SRV_PRM,	33554432 );         // Prompt for server not cashier
+define(	TC4_SRV_BAT,	67108864 );          // Batch review by cashier only
+define(	TC4_TENDER,		134217728 );        // Request amt tender instead of cash amt
+define(	TC4_RECONNO,	268435456 );        // Do not display settlement totals
+define(	TC4_DUPL,		536870912 );        // Enable checking for duplicate transctn
+define(	TC4_TRAINING,	1073741824 );       // Enabled if training mode
+define(	TC4_RESV,		2147483648 );       // Reserved
+define(	TC5_HSMENU,		4294967296 );       // Do host select using menu where applic
+define(	TC5_NOHSPRM,	8589934592 );       // No host select prompt during settlemnt
+define(	TC5_CLOGOFF,	17179869184 );      // Log off all cashiers at settlement
+define(	TC5_CALCTIP,	34359738368 );      // Calculate tip from total
+define(	TC5_SHIFT,		68719476736 );      // Shift processing enabled
+define(	TC5_NOTIP,		137438953472 );     // Disable tip at initial sale
+define(	TC5_HSDK,		274877906944 );     // Enable the hypercom sdk interface
+define(	TC6_SIGREP,		549755813888 );     // Signature reproduction
+define(	TC6_ERCTRCK,	1099511627776 );    // Erc trickle feed enabled
+define(	TC6_TRUNCPAN,	2199023255552 );    // Truncate pan on credit
+define(	TC6_NOSECOND,	4398046511104 );    // Supress second receipt
+define(	TC6_LONGTO,		8796093022208 );    // Long key press timeout (255 vs 30 secs)
+define(	TC7_ONLINE,		17592186044416 );   // Terminal online capable
+define(	TC7_PINONLINE,	35184372088832 );   // Online pin verification supported
+define(	TC7_PINOFFLINE, 70368744177664 );   // Offline pin verification supported
+define(	TC7_RDM_ATT,	140737488355328 );  // Rdm check scanner attached
+define(	TC7_CONFIG,		281474976710656 );  // Configuration report
+define(	TC7_HISTORY,	562949953421312 );  // History report
+define(	TC7_PERFORMANCE,1125899906842624 ); // Performance report

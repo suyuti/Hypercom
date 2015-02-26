@@ -1,0 +1,3 @@
+# This is IP of your PC where HYCTracer is running. 
+# You can use SERIAL or USB or FILE instead of IP
+IP=10.250.35.155

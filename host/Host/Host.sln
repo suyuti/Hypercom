@@ -1,0 +1,124 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor", "Monitor\Monitor.csproj", "{B1993747-38C1-4314-9853-662906C05AB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitorBussiness", "MonitorBussiness\MonitorBussiness.csproj", "{60E475A6-7250-475F-B5BF-36F37B6ECF75}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/YemekSepetiTest/", "http://localhost/YemekSepetiTest", "{98512F18-F9BD-4D25-B822-BC63CE6E556B}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/YemekSepetiTest"
+		Debug.AspNetCompiler.PhysicalPath = "c:\inetpub\wwwroot\YemekSepetiTest\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\YemekSepetiTest\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/YemekSepetiTest"
+		Release.AspNetCompiler.PhysicalPath = "c:\inetpub\wwwroot\YemekSepetiTest\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\YemekSepetiTest\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "c:\inetpub\wwwroot\YemekSepetiTest\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/YemekSepeti/", "http://localhost/YemekSepeti", "{357C34C4-7811-4A3B-A149-C548F3564B2A}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/YemekSepeti"
+		Debug.AspNetCompiler.PhysicalPath = "c:\inetpub\wwwroot\YemekSepeti\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\YemekSepeti\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/YemekSepeti"
+		Release.AspNetCompiler.PhysicalPath = "c:\inetpub\wwwroot\YemekSepeti\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\YemekSepeti\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "c:\inetpub\wwwroot\YemekSepeti\"
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MonitorMFC", "MonitorMFC\MonitorMFC.vcproj", "{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Release|.NET = Release|.NET
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1993747-38C1-4314-9853-662906C05AB2}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Release|.NET.ActiveCfg = Release|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B1993747-38C1-4314-9853-662906C05AB2}.Release|Win32.ActiveCfg = Release|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Release|.NET.ActiveCfg = Release|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{60E475A6-7250-475F-B5BF-36F37B6ECF75}.Release|Win32.ActiveCfg = Release|Any CPU
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Debug|.NET.ActiveCfg = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Debug|.NET.Build.0 = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Debug|Any CPU.ActiveCfg = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Debug|Mixed Platforms.Build.0 = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Debug|Win32.ActiveCfg = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Release|.NET.ActiveCfg = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Release|.NET.Build.0 = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Release|Any CPU.ActiveCfg = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{98512F18-F9BD-4D25-B822-BC63CE6E556B}.Release|Win32.ActiveCfg = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Debug|.NET.ActiveCfg = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Debug|.NET.Build.0 = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Debug|Any CPU.ActiveCfg = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Debug|Mixed Platforms.Build.0 = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Debug|Win32.ActiveCfg = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Release|.NET.ActiveCfg = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Release|.NET.Build.0 = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Release|Any CPU.ActiveCfg = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{357C34C4-7811-4A3B-A149-C548F3564B2A}.Release|Win32.ActiveCfg = Debug|.NET
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Debug|.NET.ActiveCfg = Debug|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Debug|Win32.Build.0 = Debug|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Release|.NET.ActiveCfg = Release|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Release|Any CPU.ActiveCfg = Release|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Release|Win32.ActiveCfg = Release|Win32
+		{A22687E4-B24F-43CD-A1CF-42C16CE8B44E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

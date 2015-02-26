@@ -1,0 +1,29 @@
+// determine positions in the optons string
+// ex.: HOST_SETTLED = 0, position = (MAX_OPTIONS - 1) - 0
+define(HOST_SETTLED, 63);	
+		// Tip entered
+define(TIP_ENTERED, 62);
+		// Need to send advice to host
+define(SEND_ADVICE, 61);
+		// This is a reversal
+define(REVERSAL, 60);
+		// Transaction voided
+define(VOIDED, 59);
+		// Transaction adjusted
+define(ADJUSTED, 58);
+		// Training mode transaction
+define(TRAINING_MODE, 57);
+		// AVS failed and transaction not captured
+define(AVS_FAILED, 56);
+		// Debit transaction selected
+define(DEBIT_KEY_PRESSED, 55);
+		// EBT transaction selected
+define(EBT_KEY_PRESSED, 54);
+		// 1=EBT food stamp, 0=EBT cash benefit
+define(EBTFOOD, 53);
+		// Credit or EBT has been selected. Use this flag
+define(CREDIT_EBT_SELECTED, 52);
+		// Electronic receipt sent to sig cap host						
+define(ERC_SENT, 51);
+
+define(SF_REPRINT, 50);
